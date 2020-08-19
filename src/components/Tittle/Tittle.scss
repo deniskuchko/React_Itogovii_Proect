@@ -1,0 +1,12 @@
+.tittle {
+  text-align: center;
+  margin: 15px;
+  p {
+    font-size: 14px;
+    color: green;
+    &:hover {
+      color: rgb(160, 219, 42);
+      cursor: pointer;
+    }
+  }
+}

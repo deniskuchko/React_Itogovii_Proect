@@ -1,0 +1,27 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "name": "Denis",
+      "email": "denis.kuchko@mail.ru",
+      "password": 123
+    },
+    {
+      "id": "2",
+      "name": "Kate",
+      "img": "kate.svirski@mail.ru",
+      "price": 456
+    }
+    
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
