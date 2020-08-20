@@ -72,6 +72,9 @@ export default function SignInSide() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(e) => {
+                console.log(e.target.value);
+              }}
             />
             <TextField
               variant="outlined"
@@ -83,14 +86,19 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(e) => {
+                console.log(e.target.value);
+              }}
             />
 
             <Button
-              type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={() => {
+                console.log("hi");
+              }}
             >
               Sign In
             </Button>

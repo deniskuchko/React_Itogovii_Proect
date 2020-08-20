@@ -33,9 +33,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function SignUp(props) {
   const classes = useStyles();
-
+  let newLogUpName = props.logUpInfo.newNameTouch;
+  let newLogUpEmail = props.logUpInfo.newEmailTouch;
+  let newLogUpPassword = props.logUpInfo.newPasswordTouch;
+  let onSendPersonInfoClick = () => {
+    props.sendInfoPersonClick();
+    console.log(props.logUpInfo);
+  };
+  let onNewNameLogUpChange = (e) => {
+    let body = e.target.value;
+    props.nameSendLogUpChange(body);
+  };
+  let onNewEmailLogUpChange = (e) => {
+    let body = e.target.value;
+    props.emailSendLogUpChange(body);
+  };
+  let onNewPasswordLogUpChange = (e) => {
+    let body = e.target.value;
+    props.passwordSendLogUpChange(body);
+  };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -54,9 +72,11 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="lastName"
-                label="Last Name"
+                value={newLogUpName}
+                label="Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={onNewNameLogUpChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -64,10 +84,12 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
+                value={newLogUpEmail}
                 id="email"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={onNewEmailLogUpChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -75,20 +97,22 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
+                value={newLogUpPassword}
                 name="password"
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={onNewPasswordLogUpChange}
               />
             </Grid>
           </Grid>
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={onSendPersonInfoClick}
           >
             Sign Up
           </Button>
