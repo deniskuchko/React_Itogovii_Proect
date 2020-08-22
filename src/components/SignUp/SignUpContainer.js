@@ -6,31 +6,28 @@ import {
   addLogUpPasswordCreator,
   sendInfologUpCreator,
 } from "../../redux/loginUp-reducer";
+import { connect } from "react-redux";
 
-const SignUpContainer = (props) => {
-  let state = props.store.getState().logUpInfo;
-
-  let nameSendLogUpChange = (body) => {
-    props.store.dispatch(addLogUpNameCreator(body));
+let mapStateToProps = (state) => {
+  return {
+    logUpInfo: state.logUpInfo,
   };
-  let emailSendLogUpChange = (body) => {
-    props.store.dispatch(addLogUpEmailCreator(body));
-  };
-  let passwordSendLogUpChange = (body) => {
-    props.store.dispatch(addLogUpPasswordCreator(body));
-  };
-  let sendInfoPersonClick = () => {
-    props.store.dispatch(sendInfologUpCreator());
-  };
-  return (
-    <SignUp
-      logUpInfo={state}
-      nameSendLogUpChange={nameSendLogUpChange}
-      emailSendLogUpChange={emailSendLogUpChange}
-      passwordSendLogUpChange={passwordSendLogUpChange}
-      sendInfoPersonClick={sendInfoPersonClick}
-    />
-  );
 };
-
+let mapDispatchToProps = (dispatch) => {
+  return {
+    nameSendLogUpChange: (body) => {
+      dispatch(addLogUpNameCreator(body));
+    },
+    emailSendLogUpChange: (body) => {
+      dispatch(addLogUpEmailCreator(body));
+    },
+    passwordSendLogUpChange: (body) => {
+      dispatch(addLogUpPasswordCreator(body));
+    },
+    sendInfoPersonClick: () => {
+      dispatch(sendInfologUpCreator());
+    },
+  };
+};
+let SignUpContainer = connect(mapStateToProps, mapDispatchToProps)(SignUp);
 export default SignUpContainer;

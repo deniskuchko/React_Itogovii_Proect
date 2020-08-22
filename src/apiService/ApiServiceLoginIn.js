@@ -1,4 +1,11 @@
-export default class ApiServiceLoginIn {
+let apiService = () => {
+  fetch("http://localhost:3000/personInfo").then((response) =>
+    response.json().then((data) => console.log(data))
+  );
+};
+export default apiService;
+
+/*export default class ApiServiceLoginIn {
   _apiBase = "https://conduit.productionready.io/api";
   //_baseImageUrl = 'https://starwars-visualguide.com/assets/img'
 
@@ -13,7 +20,7 @@ export default class ApiServiceLoginIn {
 
   /* getPersonImage = ({ id }) => {
     return `${this._baseImageUrl}/characters/${id}.jpg`;
-  }; */
+  };
 
   getAllUsers = async () => {
     const res = await this.getResource(`/users/login`);
@@ -23,7 +30,7 @@ export default class ApiServiceLoginIn {
   /* getUser = async (id) => {
     const person = await this.getResource(`/people/${id}/`);
     return this._transformPerson(person);
-  }; */
+  }; 
 
   _extractId = (item) => {
     const idRegExp = /\/([0-9]*)\/$/;
@@ -37,4 +44,4 @@ export default class ApiServiceLoginIn {
       password: person.password,
     };
   };
-}
+} */

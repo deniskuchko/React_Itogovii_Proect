@@ -1,27 +1,16 @@
 {
-  "posts": [
+  "personInfo": [
     {
       "id": "1",
-      "name": "Denis",
+      "name": "denis",
       "email": "denis.kuchko@mail.ru",
       "password": 123
     },
     {
-      "id": "2",
-      "name": "Kate",
-      "img": "kate.svirski@mail.ru",
-      "price": 456
+      "id": "1",
+      "name": "denis",
+      "email": "denis.kuchko@mail.ru",
+      "password": 123
     }
-    
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

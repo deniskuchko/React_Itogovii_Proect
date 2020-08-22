@@ -19,27 +19,29 @@ let initialState = {
 const logUpPersonInfoReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOUCH_NAME:
-      state.newNameTouch = action.newTextName;
-      return state;
-    case TOUCH_EMAIL:
-      state.newEmailTouch = action.newTextEmail;
-      return state;
-    case TOUCH_PASSWORD:
-      state.newPasswordTouch = action.newTextPassword;
-      return state;
+      return { ...state, newNameTouch: action.newTextName };
 
-    case TOUCH_ENTER_LOGUP:
+    case TOUCH_EMAIL:
+      return { ...state, newEmailTouch: action.newTextEmail };
+
+    case TOUCH_PASSWORD:
+      return { ...state, newPasswordTouch: action.newTextPassword };
+
+    case TOUCH_ENTER_LOGUP: {
       let newPersonInfo = {
         id: 2,
         name: state.newNameTouch,
         email: state.newEmailTouch,
         password: state.newPasswordTouch,
       };
-      state.personInfo.push(newPersonInfo);
-      state.newNameTouch = "";
-      state.newEmailTouch = "";
-      state.newPasswordTouch = "";
-      return state;
+      return {
+        ...state,
+        personInfo: [...state.personInfo, newPersonInfo],
+        newNameTouch: "",
+        newEmailTouch: "",
+        newPasswordTouch: "",
+      };
+    }
     default:
       return state;
   }
