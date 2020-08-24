@@ -1,4 +1,31 @@
-.userPhoto {
-  width: 40px;
-  height: 40px;
+.selectedPage {
+  font-weight: bold;
+}
+.userPhoto:hover {
+  transform: scale(1.5);
+}
+.personArticle {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  margin: 20px auto;
+  border: 1px solid black;
+  border-radius: 40px;
+  .infoPerson {
+    margin: 10px 0;
+    border-radius: 50%;
+    .personIMGMainPage {
+      overflow: hidden;
+      text-align: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      .userPhoto {
+        width: 40px;
+        height: 40px;
+        transition: 1s;
+      }
+    }
+  }
 }

@@ -1,16 +1,122 @@
 {
-  "personInfo": [
-    {
-      "id": "1",
-      "name": "denis",
-      "email": "denis.kuchko@mail.ru",
-      "password": 123
-    },
-    {
-      "id": "1",
-      "name": "denis",
-      "email": "denis.kuchko@mail.ru",
-      "password": 123
-    }
-  ]
+  "users": {
+    "items": [
+      {
+        "name": "xdzz",
+        "id": 11072,
+        "uniqueUrlName": null,
+        "photos": {
+          "small": null,
+          "large": null
+        },
+        "status": null,
+        "followed": false,
+        "like": false
+      },
+      {
+        "name": "hardstyle",
+        "id": 11071,
+        "uniqueUrlName": null,
+        "photos": {
+          "small": null,
+          "large": null
+        },
+        "status": null,
+        "followed": false,
+        "like": false
+      },
+      {
+        "name": "danger0us",
+        "id": 11070,
+        "uniqueUrlName": null,
+        "photos": {
+          "small": null,
+          "large": null
+        },
+        "status": null,
+        "followed": false,
+        "like": true
+      },
+      {
+        "name": "MaxDanchenko",
+        "id": 11069,
+        "uniqueUrlName": null,
+        "photos": {
+          "small": null,
+          "large": null
+        },
+        "status": null,
+        "followed": false,
+        "like": true
+      },
+      {
+        "name": "andrew404",
+        "id": 11068,
+        "uniqueUrlName": null,
+        "photos": {
+          "small": null,
+          "large": null
+        },
+        "status": null,
+        "followed": false
+      },
+      {
+        "name": "Dimon2306",
+        "id": 11067,
+        "uniqueUrlName": null,
+        "photos": {
+          "small": null,
+          "large": null
+        },
+        "status": null,
+        "followed": false
+      },
+      {
+        "name": "SashaPlotnikov",
+        "id": 11066,
+        "uniqueUrlName": null,
+        "photos": {
+          "small": null,
+          "large": null
+        },
+        "status": null,
+        "followed": false
+      },
+      {
+        "name": "evgenii1901",
+        "id": 11065,
+        "uniqueUrlName": null,
+        "photos": {
+          "small": null,
+          "large": null
+        },
+        "status": null,
+        "followed": false
+      },
+      {
+        "name": "evgenii190",
+        "id": 11064,
+        "uniqueUrlName": null,
+        "photos": {
+          "small": null,
+          "large": null
+        },
+        "status": null,
+        "followed": false
+      },
+      {
+        "name": "fedorov1996",
+        "id": 11063,
+        "uniqueUrlName": null,
+        "photos": {
+          "small": null,
+          "large": null
+        },
+        "status": null,
+        "followed": false
+      }
+    ],
+    "totalCount": 6080,
+    "error": null
+  }
 }

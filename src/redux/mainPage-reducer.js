@@ -1,37 +1,22 @@
 const LIKE = "LIKE";
 const UNLIKE = "UNLIKE";
 const SETUSERS = "SETUSERS";
-
+const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 let initialState = {
-  users: [
-    {
-      id: 1,
-      name: "Denis",
-      data: "28.02.2020",
-      title: "Title monkey",
-      like: true,
-      photoUsers:
-        "https://i2.wp.com/logos-download.com/wp-content/uploads/2016/04/Vancouver_Canucks_logo_brand.png",
-    },
-    {
-      id: 2,
-      name: "Denis",
-      data: "28.02.2020",
-      title: "Title monkey",
-      like: false,
-      photoUsers:
-        "https://i2.wp.com/logos-download.com/wp-content/uploads/2016/04/Vancouver_Canucks_logo_brand.png",
-    },
-  ],
+  articles: [],
+  pageSize: 10,
+  articlesCount: 0,
+  currentPage: 1,
 };
-const usersReducers = (state = initialState, action) => {
+const mainPageReducers = (state = initialState, action) => {
   switch (action.type) {
     case LIKE:
       return {
         ...state,
-        users: state.users.map((u) => {
-          if (u.id === action.userId) {
-            return { ...u, like: true };
+        articles: state.articles.map((u) => {
+          if (u.slug === action.userId) {
+            return { ...u, favorited: true };
           }
           return u;
         }),
@@ -39,15 +24,28 @@ const usersReducers = (state = initialState, action) => {
     case UNLIKE:
       return {
         ...state,
-        users: state.users.map((u) => {
-          if (u.id === action.userId) {
-            return { ...u, like: false };
+        articles: state.articles.map((u) => {
+          if (u.slug === action.userId) {
+            return { ...u, favorited: false };
           }
           return u;
         }),
       };
     case SETUSERS:
-      return { ...state, users: [...state.users, ...action.users] };
+      return {
+        ...state,
+        articles: [...action.articles],
+      };
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.currentPage,
+      };
+    case SET_TOTAL_USERS_COUNT:
+      return {
+        ...state,
+        articlesCount: action.count,
+      };
 
     default:
       return state;
@@ -62,8 +60,16 @@ export const unLikeAC = (userId) => ({
   type: UNLIKE,
   userId,
 });
-export const setUsersAC = (users) => ({
+export const setUsersAC = (articles) => ({
   type: SETUSERS,
-  users,
+  articles,
 });
-export default usersReducers;
+export const setCurrentPageAC = (currentPage) => ({
+  type: SET_CURRENT_PAGE,
+  currentPage,
+});
+export const setTotalUsersCountAC = (count) => ({
+  type: SET_TOTAL_USERS_COUNT,
+  count,
+});
+export default mainPageReducers;

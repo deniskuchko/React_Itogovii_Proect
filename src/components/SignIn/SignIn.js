@@ -9,7 +9,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { NavLink } from "react-router-dom";
-
+import "./SignIn.scss";
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
@@ -61,7 +61,7 @@ export default function SignInSide(props) {
   };
 
   return (
-    <Grid container component="main" className={classes.root}>
+    <Grid id="signInMain" container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>

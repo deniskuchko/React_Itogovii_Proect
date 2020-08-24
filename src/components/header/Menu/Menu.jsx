@@ -17,7 +17,9 @@ export default class Menu extends Component {
         <NavLink to="/">Home</NavLink>
 
         {this.state.items.map((item, index) => (
-          <NavLink to={`/${item.toLowerCase()}`}>{item}</NavLink>
+          <NavLink key={index} to={`/${item.toLowerCase()}`}>
+            {item}
+          </NavLink>
         ))}
       </div>
     );
