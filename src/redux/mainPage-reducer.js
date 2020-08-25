@@ -3,11 +3,13 @@ const UNLIKE = "UNLIKE";
 const SETUSERS = "SETUSERS";
 const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const TOOGLE_IS_FETCHING = "TOOGLE_IS_FETCHING";
 let initialState = {
   articles: [],
   pageSize: 10,
   articlesCount: 0,
   currentPage: 1,
+  isFetching: true,
 };
 const mainPageReducers = (state = initialState, action) => {
   switch (action.type) {
@@ -46,30 +48,36 @@ const mainPageReducers = (state = initialState, action) => {
         ...state,
         articlesCount: action.count,
       };
+    case TOOGLE_IS_FETCHING:
+      return { ...state, isFetching: action.isFetching };
 
     default:
       return state;
   }
 };
 
-export const likeAC = (userId) => ({
+export const like = (userId) => ({
   type: LIKE,
   userId,
 });
-export const unLikeAC = (userId) => ({
+export const unLike = (userId) => ({
   type: UNLIKE,
   userId,
 });
-export const setUsersAC = (articles) => ({
+export const setUsers = (articles) => ({
   type: SETUSERS,
   articles,
 });
-export const setCurrentPageAC = (currentPage) => ({
+export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
 });
-export const setTotalUsersCountAC = (count) => ({
+export const setTotalUsersCount = (count) => ({
   type: SET_TOTAL_USERS_COUNT,
   count,
+});
+export const toogleIsFetching = (isFetching) => ({
+  type: TOOGLE_IS_FETCHING,
+  isFetching,
 });
 export default mainPageReducers;

@@ -1,5 +1,9 @@
 .selectedPage {
   font-weight: bold;
+  color: greenyellow;
+  border: 1px solid black;
+  background-color: hotpink;
+  border-radius: 50%;
 }
 .userPhoto:hover {
   transform: scale(1.5);

@@ -7,7 +7,7 @@ export default class Menu extends Component {
     super(props);
 
     this.state = {
-      items: ["Signin", "Signup"],
+      items: ["Signin", "Signup", "Profile"],
     };
   }
 
