@@ -6,22 +6,35 @@ import {} from "../../redux/mainPage-reducer";
 import Profile from "./Profile";
 import { setUsersProfile } from "../../redux/profilePage-reducer";
 class ProfileContainer extends React.Component {
-  componentDidMount() {
-    axios
-      .get(
-        `https://conduit.productionready.io/api/articles?limit=10&amp;offset=1`
-      )
-      .then((response) => {
-        debugger;
-        this.props.setUsersProfile(response.data.articles[0].author);
-      });
+  constructor () {
+    super();
+
+    this.id = 0;
+    this.user = {};
+    this.posts = [];
+  }
+
+  async componentDidMount() {
+    await this.getUserData();
+    await this.getUserPosts();
+
+    console.log(this.user);
+    console.log(this.posts);
+  }
+
+  async getUserData() {
+    const user = await axios.get(`http://localhost:3000/users/${this.id}`);
+
+    this.user = user.data;
+  }
+
+  async getUserPosts() {
+    const posts = await axios.get('http://localhost:3000/posts');
+
+    this.posts = (posts.data || []).filter(({ userId }) => userId === this.id);
   }
   render() {
-    return (
-      <>
-        <Profile {...this.props} profile={this.props.profile} />
-      </>
-    );
+    return <Profile {...this.props} profile={this.props.profile} />;
   }
 }
 let mapStateToProps = (state) => {
