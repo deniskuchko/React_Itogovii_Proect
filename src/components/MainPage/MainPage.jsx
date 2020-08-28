@@ -5,7 +5,7 @@ import userPhoto from "../../assets/image/user.png";
 import { NavLink } from "react-router-dom";
 
 let MainPage = (props) => {
-  let pageCount = Math.ceil(props.articlesCount / props.pageSize);
+  let pageCount = Math.ceil(props.postCount / props.pageSize);
   let page = [];
   for (let i = 1; i <= pageCount; i++) {
     page.push(i);
@@ -27,26 +27,26 @@ let MainPage = (props) => {
           );
         })}
       </div>
-      {props.articles.map((u) => (
-        <div key={u.slug} className={s.personArticle}>
+      {props.post.map((u) => (
+        <div key={u.id} className={s.personArticle}>
           <span className={s.infoPerson}>
             <div className={s.personIMGMainPage}>
-              <NavLink to={"/profile/" + u.slug}>
+              <NavLink to={"/profile/" + u.id}>
                 <img
-                  src={u.image !== null ? u.author.image : userPhoto}
+                  src={u.image !== null ? u.image : userPhoto}
                   className={s.userPhoto}
                 />
               </NavLink>
             </div>
-            <div>{u.author.username}</div>
-            <div>{u.createdAt}</div>
+            <div>{u.name}</div>
             <div>{u.title}</div>
+            <div>{u.value}</div>
           </span>
           <span>
             {u.favorited ? (
               <button
                 onClick={() => {
-                  props.unLike(u.slug);
+                  props.unLike(u.id);
                 }}
               >
                 0
@@ -54,7 +54,7 @@ let MainPage = (props) => {
             ) : (
               <button
                 onClick={() => {
-                  props.like(u.slug);
+                  props.like(u.id);
                 }}
               >
                 1

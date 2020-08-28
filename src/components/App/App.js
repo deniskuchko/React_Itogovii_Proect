@@ -17,7 +17,10 @@ const App = () => {
         <Route exact path="/" render={() => <MainPageContainer />}></Route>
         <Route exact path="/signin" render={() => <SignInContainer />}></Route>
         <Route exact path="/signup" render={() => <SignUpContainer />}></Route>
-        <Route path="/profile" render={() => <ProfileContainer />}></Route>
+        <Route
+          path="/profile/:usersId?"
+          render={() => <ProfileContainer />}
+        ></Route>
       </div>
       <StickyFooter />
     </div>

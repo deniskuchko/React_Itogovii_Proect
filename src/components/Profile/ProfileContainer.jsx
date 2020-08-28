@@ -5,8 +5,9 @@ import * as axios from "axios";
 import {} from "../../redux/mainPage-reducer";
 import Profile from "./Profile";
 import { setUsersProfile } from "../../redux/profilePage-reducer";
+import { withRouter } from "react-router-dom";
 class ProfileContainer extends React.Component {
-  constructor () {
+  constructor() {
     super();
 
     this.id = 0;
@@ -15,24 +16,37 @@ class ProfileContainer extends React.Component {
   }
 
   async componentDidMount() {
-    await this.getUserData();
+    /* await this.getUserData();
     await this.getUserPosts();
 
     console.log(this.user);
-    console.log(this.posts);
+    console.log(this.posts); */
+    let userId = this.props.match.params.userId;
+    console.log(this.props.match.params);
+    !userId && (userId = 2);
+
+    axios.get(`http://localhost:3000/users`).then((responce) => {
+      console.log(responce);
+      this.props.setUsersProfile(responce.data.user[`${userId}`]);
+    });
   }
 
-  async getUserData() {
-    const user = await axios.get(`http://localhost:3000/users/${this.id}`);
+  /* .get("http://localhost:3000/users" + userId)              !!!!!  как создать в локал хосте объект с адресом .../uder/1
+      .then((response) => {
+        console.log(response.data);
+        this.props.setUsersProfile(response.data);
+      }); */
+  /* async getUserData() {
+    const user = await axios.get(`http://localhost:3000/users`);
 
     this.user = user.data;
   }
 
   async getUserPosts() {
-    const posts = await axios.get('http://localhost:3000/posts');
+    const posts = await axios.get("http://localhost:3000/posts");
 
     this.posts = (posts.data || []).filter(({ userId }) => userId === this.id);
-  }
+  } */
   render() {
     return <Profile {...this.props} profile={this.props.profile} />;
   }
@@ -43,6 +57,8 @@ let mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  setUsersProfile,
-})(ProfileContainer);
+export default withRouter(
+  connect(mapStateToProps, {
+    setUsersProfile,
+  })(ProfileContainer)
+);

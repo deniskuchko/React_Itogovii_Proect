@@ -7,13 +7,17 @@ let Profile = (props) => {
   if (!props.profile) {
     return <Preloader />;
   }
-  console.log(props);
   return (
     <div className={s.profilePage}>
       <img
-        src="https://thispersondoesnotexist.com/image" /* {props.profile.image ? `${props.profile.image}` : userPhoto} */
+        src={
+          props.profile.profileImage
+        } /* {props.profile.profileImage ? `${props.profile.profileImage}` : userPhoto} */
         className={s.userPhoto}
       />
+      <div>Name:{props.profile.name}</div>
+      <div>email:{props.profile.email}</div>
+      <div>nickname:{props.profile.nickname}</div>
     </div>
   );
 };

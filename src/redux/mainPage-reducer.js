@@ -5,9 +5,9 @@ const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const TOOGLE_IS_FETCHING = "TOOGLE_IS_FETCHING";
 let initialState = {
-  articles: [],
-  pageSize: 10,
-  articlesCount: 0,
+  post: [],
+  pageSize: 1,
+  postCount: 0,
   currentPage: 1,
   isFetching: true,
 };
@@ -16,8 +16,8 @@ const mainPageReducers = (state = initialState, action) => {
     case LIKE:
       return {
         ...state,
-        articles: state.articles.map((u) => {
-          if (u.slug === action.userId) {
+        post: state.post.map((u) => {
+          if (u.id === action.userId) {
             return { ...u, favorited: true };
           }
           return u;
@@ -26,8 +26,8 @@ const mainPageReducers = (state = initialState, action) => {
     case UNLIKE:
       return {
         ...state,
-        articles: state.articles.map((u) => {
-          if (u.slug === action.userId) {
+        post: state.post.map((u) => {
+          if (u.id === action.userId) {
             return { ...u, favorited: false };
           }
           return u;
@@ -36,7 +36,7 @@ const mainPageReducers = (state = initialState, action) => {
     case SETUSERS:
       return {
         ...state,
-        articles: [...action.articles],
+        post: [...action.post],
       };
     case SET_CURRENT_PAGE:
       return {
@@ -46,7 +46,7 @@ const mainPageReducers = (state = initialState, action) => {
     case SET_TOTAL_USERS_COUNT:
       return {
         ...state,
-        articlesCount: action.count,
+        postCount: action.count,
       };
     case TOOGLE_IS_FETCHING:
       return { ...state, isFetching: action.isFetching };
@@ -64,9 +64,9 @@ export const unLike = (userId) => ({
   type: UNLIKE,
   userId,
 });
-export const setUsers = (articles) => ({
+export const setUsers = (post) => ({
   type: SETUSERS,
-  articles,
+  post,
 });
 export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,

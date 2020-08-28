@@ -18,13 +18,13 @@ class MainPageContainer extends React.Component {
     this.props.toogleIsFetching(true);
     axios
       .get(
-        `https://conduit.productionready.io/api/articles?limit=${this.props.pageSize}&amp;offset=${this.props.currentPage}`
+        `http://localhost:3000/posts?page=${this.props.currentPage}&count=${this.props.pageSize}`
       )
       .then((response) => {
         this.props.toogleIsFetching(false);
 
-        this.props.setUsers(response.data.articles);
-        this.props.setTotalUsersCount(response.data.articlesCount);
+        this.props.setUsers(response.data.post);
+        this.props.setTotalUsersCount(response.data.postCount);
       });
   }
   onPageChange = (pageNumber) => {
@@ -33,12 +33,12 @@ class MainPageContainer extends React.Component {
     this.props.setCurrentPage(pageNumber);
     axios
       .get(
-        `https://conduit.productionready.io/api/articles?limit=${this.props.pageSize}&amp;offset=${pageNumber}`
+        `http://localhost:3000/posts?page=${pageNumber}&count=${this.props.pageSize}`
       )
       .then((response) => {
         this.props.toogleIsFetching(false);
 
-        this.props.setUsers(response.data.articles);
+        this.props.setUsers(response.data.post);
       });
   };
   render() {
@@ -46,10 +46,10 @@ class MainPageContainer extends React.Component {
       <>
         {this.props.isFetching ? <Preloader /> : null}
         <MainPage
-          articlesCount={this.props.articlesCount}
+          postCount={this.props.postCount}
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
-          articles={this.props.articles}
+          post={this.props.post}
           onPageChange={this.onPageChange}
           unLike={this.props.unLike}
           like={this.props.like}
@@ -60,9 +60,9 @@ class MainPageContainer extends React.Component {
 }
 let mapStateToProps = (state) => {
   return {
-    articles: state.mainPage.articles,
+    post: state.mainPage.post,
     pageSize: state.mainPage.pageSize,
-    articlesCount: state.mainPage.articlesCount,
+    postCount: state.mainPage.postCount,
     currentPage: state.mainPage.currentPage,
     isFetching: state.mainPage.isFetching,
   };

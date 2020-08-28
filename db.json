@@ -1,55 +1,136 @@
 {
-  "users": [
-    {
-      "id": 0,
-      "name": "Max",
-      "nickname": "maxfuckyou",
-      "email": "max@gmail.com",
-      "profileImage": "images/1241i-i124214o-124.js",
-      "subscriptions": [],
-      "hash": ""
-    },
-    {
-      "id": 1,
-      "name": "Petr",
-      "nickname": "peterfuckmax",
-      "email": "petr@gmail.com",
-      "profileImage": "images/1241i-safkjhasjkhf-124.js",
-      "subscriptions": [],
-      "hash": ""
-    }
-  ],
-  "posts": [
-    {
-      "id": 0,
-      "title": "Great post",
-      "value": "lorem ipsum dolor sit amet",
-      "likes": 0,
-      "keywords": [
-        "lorem",
-        "sit"
-      ],
-      "userId": 0
-    },
-    {
-      "id": 1,
-      "title": "Low quality post",
-      "value": "Mama i m coming home",
-      "likes": 0,
-      "keywords": [
-        "mama"
-      ],
-      "userId": 1
-    },
-    {
-      "title": "Brand new pp",
-      "value": "i need a cure",
-      "likes": 0,
-      "keywords": [
-        "cure"
-      ],
-      "userId": 0,
-      "id": 2
-    }
-  ]
+  "users": {
+    "user": [
+      {
+        "id": 0,
+        "name": "Max",
+        "nickname": "maxfuckyou",
+        "email": "max@gmail.com",
+        "profileImage": "https://uploads.gravitatedesign.com/2016/05/07012344/Joe.jpg",
+        "subscriptions": [],
+        "hash": ""
+      },
+      {
+        "id": 1,
+        "name": "Petr",
+        "nickname": "peterfuckmax",
+        "email": "petr@gmail.com",
+        "profileImage": "https://peril.by/wp-content/uploads/2015/12/avada-team2-174543104.jpg",
+        "subscriptions": [],
+        "hash": ""
+      },
+      {
+        "id": 3,
+        "name": "Denis",
+        "nickname": "Denisfuckyou",
+        "email": "Denis@gmail.com",
+        "profileImage": "https://churchm.ag/wp-content/uploads/2014/09/david_8-24-12-SQ.jpg",
+        "subscriptions": [],
+        "hash": ""
+      },
+      {
+        "id": 4,
+        "name": "Petr",
+        "nickname": "peterfuckmax",
+        "email": "petr@gmail.com",
+        "profileImage": "images/1241i-safkjhasjkhf-124.js",
+        "subscriptions": [],
+        "hash": ""
+      },
+      {
+        "id": 5,
+        "name": "Max",
+        "nickname": "maxfuckyou",
+        "email": "max@gmail.com",
+        "profileImage": "images/1241i-i124214o-124.js",
+        "subscriptions": [],
+        "hash": ""
+      },
+      {
+        "id": 6,
+        "name": "Petr",
+        "nickname": "peterfuckmax",
+        "email": "petr@gmail.com",
+        "profileImage": "images/1241i-safkjhasjkhf-124.js",
+        "subscriptions": [],
+        "hash": ""
+      },
+      {
+        "id": 7,
+        "name": "Max",
+        "nickname": "maxfuckyou",
+        "email": "max@gmail.com",
+        "profileImage": "images/1241i-i124214o-124.js",
+        "subscriptions": [],
+        "hash": ""
+      },
+      {
+        "id": 8,
+        "name": "Petr",
+        "nickname": "peterfuckmax",
+        "email": "petr@gmail.com",
+        "profileImage": "images/1241i-safkjhasjkhf-124.js",
+        "subscriptions": [],
+        "hash": ""
+      },
+      {
+        "id": 9,
+        "name": "Max",
+        "nickname": "maxfuckyou",
+        "email": "max@gmail.com",
+        "profileImage": "images/1241i-i124214o-124.js",
+        "subscriptions": [],
+        "hash": ""
+      },
+      {
+        "id": 10,
+        "name": "Petr",
+        "nickname": "peterfuckmax",
+        "email": "petr@gmail.com",
+        "profileImage": "images/1241i-safkjhasjkhf-124.js",
+        "subscriptions": [],
+        "hash": ""
+      }
+    ],
+    "usersCount": 11
+  },
+  "posts": {
+    "post": [
+      {
+        "id": 0,
+        "name": "Max",
+        "image": "https://uploads.gravitatedesign.com/2016/05/07012344/Joe.jpg",
+        "title": "Great post",
+        "value": "lorem ipsum dolor sit amet",
+        "likes": 0,
+        "favorited": true,
+        "keywords": ["lorem", "sit"],
+        "userId": 0
+      },
+      {
+        "id": 1,
+        "name": "Petr",
+
+        "image": "https://peril.by/wp-content/uploads/2015/12/avada-team2-174543104.jpg",
+        "title": "Low quality post",
+        "value": "Mama i m coming home",
+        "likes": 0,
+        "favorited": false,
+        "keywords": ["mama"],
+        "userId": 1
+      },
+      {
+        "id": 2,
+        "name": "Max",
+        "image": "https://uploads.gravitatedesign.com/2016/05/07012344/Joe.jpg",
+        "title": "Brand new pp",
+        "value": "i need a cure",
+        "likes": 0,
+        "favorited": true,
+        "keywords": ["cure"],
+        "userId": 0
+      }
+    ],
+    "postCount": 3
+  }
 }
