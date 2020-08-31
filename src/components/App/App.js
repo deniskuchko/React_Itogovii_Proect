@@ -22,7 +22,7 @@ const App = () => {
           render={() => <ProfileContainer />}
         ></Route>
       </div>
-      <StickyFooter />
+      {/* <StickyFooter /> */}
     </div>
   );
 };

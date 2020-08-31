@@ -33,13 +33,14 @@ class MainPageContainer extends React.Component {
     this.props.setCurrentPage(pageNumber);
     axios
       .get(
-        `http://localhost:3000/posts?page=${pageNumber}&count=${this.props.pageSize}`
+        `http://localhost:3000/posts?_page=${pageNumber}&_limit=${this.props.pageSize}`
       )
       .then((response) => {
         this.props.toogleIsFetching(false);
 
         this.props.setUsers(response.data.post);
       });
+    debugger;
   };
   render() {
     return (

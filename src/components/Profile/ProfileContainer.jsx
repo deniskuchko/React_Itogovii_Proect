@@ -4,8 +4,13 @@ import * as axios from "axios";
 
 import {} from "../../redux/mainPage-reducer";
 import Profile from "./Profile";
-import { setUsersProfile } from "../../redux/profilePage-reducer";
+import {
+  setUsersProfile,
+  follow,
+  unFollow,
+} from "../../redux/profilePage-reducer";
 import { withRouter } from "react-router-dom";
+
 class ProfileContainer extends React.Component {
   constructor() {
     super();
@@ -21,12 +26,12 @@ class ProfileContainer extends React.Component {
 
     console.log(this.user);
     console.log(this.posts); */
-    let userId = this.props.match.params.userId;
-    console.log(this.props.match.params);
+
+    let userId = this.props.match.params.usersId;
+
     !userId && (userId = 2);
 
     axios.get(`http://localhost:3000/users`).then((responce) => {
-      console.log(responce);
       this.props.setUsersProfile(responce.data.user[`${userId}`]);
     });
   }
@@ -54,11 +59,14 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => {
   return {
     profile: state.profilePage.profile,
+    isFollowed: state.profilePage.isFollowed,
   };
 };
 
 export default withRouter(
   connect(mapStateToProps, {
     setUsersProfile,
+    follow,
+    unFollow,
   })(ProfileContainer)
 );

@@ -8,6 +8,7 @@
         "email": "max@gmail.com",
         "profileImage": "https://uploads.gravitatedesign.com/2016/05/07012344/Joe.jpg",
         "subscriptions": [],
+        "followed": true,
         "hash": ""
       },
       {
@@ -17,6 +18,8 @@
         "email": "petr@gmail.com",
         "profileImage": "https://peril.by/wp-content/uploads/2015/12/avada-team2-174543104.jpg",
         "subscriptions": [],
+        "followed": true,
+
         "hash": ""
       },
       {
@@ -26,6 +29,8 @@
         "email": "Denis@gmail.com",
         "profileImage": "https://churchm.ag/wp-content/uploads/2014/09/david_8-24-12-SQ.jpg",
         "subscriptions": [],
+        "followed": true,
+
         "hash": ""
       },
       {
@@ -35,6 +40,8 @@
         "email": "petr@gmail.com",
         "profileImage": "images/1241i-safkjhasjkhf-124.js",
         "subscriptions": [],
+        "followed": false,
+
         "hash": ""
       },
       {
@@ -44,6 +51,8 @@
         "email": "max@gmail.com",
         "profileImage": "images/1241i-i124214o-124.js",
         "subscriptions": [],
+        "followed": false,
+
         "hash": ""
       },
       {
@@ -53,6 +62,8 @@
         "email": "petr@gmail.com",
         "profileImage": "images/1241i-safkjhasjkhf-124.js",
         "subscriptions": [],
+        "followed": false,
+
         "hash": ""
       },
       {
@@ -62,6 +73,8 @@
         "email": "max@gmail.com",
         "profileImage": "images/1241i-i124214o-124.js",
         "subscriptions": [],
+        "followed": false,
+
         "hash": ""
       },
       {
@@ -71,6 +84,8 @@
         "email": "petr@gmail.com",
         "profileImage": "images/1241i-safkjhasjkhf-124.js",
         "subscriptions": [],
+        "followed": true,
+
         "hash": ""
       },
       {
@@ -80,6 +95,8 @@
         "email": "max@gmail.com",
         "profileImage": "images/1241i-i124214o-124.js",
         "subscriptions": [],
+        "followed": true,
+
         "hash": ""
       },
       {
@@ -89,6 +106,8 @@
         "email": "petr@gmail.com",
         "profileImage": "images/1241i-safkjhasjkhf-124.js",
         "subscriptions": [],
+        "followed": true,
+
         "hash": ""
       }
     ],
