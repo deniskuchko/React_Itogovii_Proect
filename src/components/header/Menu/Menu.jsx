@@ -5,10 +5,12 @@ import MenuLogIn from "../../common/MenuLogIn/MenuLogIn";
 import MenuLogOut from "../../common/MenuLoOut/MenuLogout";
 
 const Menu = (props) => {
+  debugger;
+
   return (
     <div className="menu">
       <NavLink to="/">Home</NavLink>
-      {props.isAtuth ? <MenuLogIn /> : <MenuLogOut />}
+      {false ? <MenuLogOut /> : <MenuLogIn />}
     </div>
   );
 };

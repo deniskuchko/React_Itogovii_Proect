@@ -1,46 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as axios from "axios";
 
 import {
   like,
   unLike,
-  setUsers,
-  setCurrentPage,
-  setTotalUsersCount,
-  toogleIsFetching,
+  getPostsThunk,
+  getPostsPageThunk,
 } from "../../redux/mainPage-reducer";
 import MainPage from "./MainPage";
 import Preloader from "../common/Preloader/Preloader";
 
 class MainPageContainer extends React.Component {
   componentDidMount() {
-    this.props.toogleIsFetching(true);
-    axios
-      .get(
-        `http://localhost:3000/posts?page=${this.props.currentPage}&count=${this.props.pageSize}`
-      )
-      .then((response) => {
-        this.props.toogleIsFetching(false);
-
-        this.props.setUsers(response.data.post);
-        this.props.setTotalUsersCount(response.data.postCount);
-      });
+    this.props.getPostsThunk(this.props.currentPage, this.props.pageSize);
   }
+
   onPageChange = (pageNumber) => {
-    this.props.toogleIsFetching(true);
-
-    this.props.setCurrentPage(pageNumber);
-    axios
-      .get(
-        `http://localhost:3000/posts?_page=${pageNumber}&_limit=${this.props.pageSize}`
-      )
-      .then((response) => {
-        this.props.toogleIsFetching(false);
-
-        this.props.setUsers(response.data.post);
-      });
-    debugger;
+    this.props.getPostsPageThunk(pageNumber, this.props.pageSize);
   };
   render() {
     return (
@@ -72,8 +48,7 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   like,
   unLike,
-  setUsers,
-  setCurrentPage,
-  setTotalUsersCount,
-  toogleIsFetching,
+
+  getPostsThunk,
+  getPostsPageThunk,
 })(MainPageContainer);

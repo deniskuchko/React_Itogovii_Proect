@@ -1,3 +1,5 @@
+import { userAPI } from "../api/api";
+
 const LIKE = "LIKE";
 const UNLIKE = "UNLIKE";
 const SETUSERS = "SETUSERS";
@@ -11,6 +13,7 @@ let initialState = {
   currentPage: 1,
   isFetching: true,
 };
+
 const mainPageReducers = (state = initialState, action) => {
   switch (action.type) {
     case LIKE:
@@ -80,4 +83,30 @@ export const toogleIsFetching = (isFetching) => ({
   type: TOOGLE_IS_FETCHING,
   isFetching,
 });
+export const getPostsThunk = (currentPage, pageSize) => {
+  return (dispatch) => {
+    dispatch(toogleIsFetching(true));
+    userAPI
+      .getPosts(currentPage, pageSize)
+      .then((response) => response.data)
+
+      .then((data) => {
+        dispatch(toogleIsFetching(false));
+        dispatch(setUsers(data.post));
+        dispatch(setTotalUsersCount(data.postCount));
+      })
+      .catch((e) => alert(`error in get POSTS : ${e}`));
+  };
+};
+export const getPostsPageThunk = (pageNumber, pageSize) => {
+  return (dispatch) => {
+    dispatch(toogleIsFetching(true));
+
+    dispatch(setCurrentPage(pageNumber));
+    userAPI.getPosts(pageNumber, pageSize).then((response) => {
+      dispatch(toogleIsFetching(false));
+      dispatch(setUsers(response.post));
+    });
+  };
+};
 export default mainPageReducers;

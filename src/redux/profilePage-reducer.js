@@ -1,3 +1,5 @@
+import { userAPI } from "../api/api";
+
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -5,6 +7,7 @@ let initialState = {
   profile: null,
   isFollowed: true,
 };
+
 const profilePageReducers = (state = initialState, action) => {
   switch (action.type) {
     case FOLLOW:
@@ -38,4 +41,14 @@ export const follow = () => ({
 export const unFollow = () => ({
   type: UNFOLLOW,
 });
+export const getProfileThunk = (userId) => {
+  return (dispatsh) => {
+    userAPI
+      .getUsers(userId)
+      .then((responce) => {
+        dispatsh(setUsersProfile(responce.data.user[`${userId}`]));
+      })
+      .catch((e) => alert(`error in get USERS : ${e}`));
+  };
+};
 export default profilePageReducers;

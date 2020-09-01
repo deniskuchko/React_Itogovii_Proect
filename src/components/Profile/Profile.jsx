@@ -24,6 +24,7 @@ let Profile = (props) => {
           onClick={() => {
             axios.get(`http://localhost:3000/posts`).then((response) => {
               console.log(response);
+              props.follow();
             });
             /* axios.post(`http://localhost:3000/posts`).then((response) => {
               console.log(response);

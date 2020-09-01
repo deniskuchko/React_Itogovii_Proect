@@ -140,14 +140,14 @@
       },
       {
         "id": 2,
-        "name": "Max",
-        "image": "https://uploads.gravitatedesign.com/2016/05/07012344/Joe.jpg",
+        "name": "Denis",
+        "image": "https://churchm.ag/wp-content/uploads/2014/09/david_8-24-12-SQ.jpg",
         "title": "Brand new pp",
         "value": "i need a cure",
         "likes": 0,
         "favorited": true,
         "keywords": ["cure"],
-        "userId": 0
+        "userId": 3
       }
     ],
     "postCount": 3

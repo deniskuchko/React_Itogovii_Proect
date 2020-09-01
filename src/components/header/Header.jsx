@@ -5,7 +5,7 @@ import Menu from "./Menu/Menu";
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
 
-function Header(props) {
+const Header = (props) => {
   return (
     <header>
       <NavLink to="/">conduit</NavLink>
@@ -13,5 +13,5 @@ function Header(props) {
       <Menu {...props} />
     </header>
   );
-}
+};
 export default Header;

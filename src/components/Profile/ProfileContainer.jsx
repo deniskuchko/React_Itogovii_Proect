@@ -5,11 +5,12 @@ import * as axios from "axios";
 import {} from "../../redux/mainPage-reducer";
 import Profile from "./Profile";
 import {
-  setUsersProfile,
   follow,
   unFollow,
+  getProfileThunk,
 } from "../../redux/profilePage-reducer";
 import { withRouter } from "react-router-dom";
+import { userAPI } from "../../api/api";
 
 class ProfileContainer extends React.Component {
   constructor() {
@@ -30,10 +31,7 @@ class ProfileContainer extends React.Component {
     let userId = this.props.match.params.usersId;
 
     !userId && (userId = 2);
-
-    axios.get(`http://localhost:3000/users`).then((responce) => {
-      this.props.setUsersProfile(responce.data.user[`${userId}`]);
-    });
+    this.props.getProfileThunk(userId);
   }
 
   /* .get("http://localhost:3000/users" + userId)              !!!!!  как создать в локал хосте объект с адресом .../uder/1
@@ -63,10 +61,8 @@ let mapStateToProps = (state) => {
   };
 };
 
-export default withRouter(
-  connect(mapStateToProps, {
-    setUsersProfile,
-    follow,
-    unFollow,
-  })(ProfileContainer)
-);
+export default connect(mapStateToProps, {
+  getProfileThunk,
+  follow,
+  unFollow,
+})(withRouter(ProfileContainer));
