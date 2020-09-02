@@ -5,12 +5,10 @@ import MenuLogIn from "../../common/MenuLogIn/MenuLogIn";
 import MenuLogOut from "../../common/MenuLoOut/MenuLogout";
 
 const Menu = (props) => {
-  debugger;
-
   return (
     <div className="menu">
       <NavLink to="/">Home</NavLink>
-      {false ? <MenuLogOut /> : <MenuLogIn />}
+      {props.isAuth ? <MenuLogOut /> : <MenuLogIn />}
     </div>
   );
 };

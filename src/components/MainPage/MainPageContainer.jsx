@@ -30,6 +30,7 @@ class MainPageContainer extends React.Component {
           onPageChange={this.onPageChange}
           unLike={this.props.unLike}
           like={this.props.like}
+          isAuth={this.props.isAuth}
         />
       </>
     );
@@ -42,6 +43,7 @@ let mapStateToProps = (state) => {
     postCount: state.mainPage.postCount,
     currentPage: state.mainPage.currentPage,
     isFetching: state.mainPage.isFetching,
+    isAuth: state.auth.isAuth,
   };
 };
 

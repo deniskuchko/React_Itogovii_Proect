@@ -2,7 +2,7 @@ import React from "react";
 
 import s from "./MainPage.module.scss";
 import userPhoto from "../../assets/image/user.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 let MainPage = (props) => {
   let pageCount = Math.ceil(props.postCount / props.pageSize);
@@ -46,6 +46,11 @@ let MainPage = (props) => {
             {u.favorited ? (
               <button
                 onClick={() => {
+                  /* if (!props.isAuth) {
+                    return <Redirect to={"/signin"} />;
+                  } else {
+                    props.unLike(u.id);
+                  } */
                   props.unLike(u.id);
                 }}
               >

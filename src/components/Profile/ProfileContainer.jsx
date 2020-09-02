@@ -9,8 +9,10 @@ import {
   unFollow,
   getProfileThunk,
 } from "../../redux/profilePage-reducer";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { userAPI } from "../../api/api";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
   constructor() {
@@ -60,9 +62,14 @@ let mapStateToProps = (state) => {
     isFollowed: state.profilePage.isFollowed,
   };
 };
+withAuthRedirect(Profile);
 
-export default connect(mapStateToProps, {
-  getProfileThunk,
-  follow,
-  unFollow,
-})(withRouter(ProfileContainer));
+export default compose(
+  connect(mapStateToProps, {
+    getProfileThunk,
+    follow,
+    unFollow,
+  }),
+  withRouter,
+  withAuthRedirect
+)(ProfileContainer);
