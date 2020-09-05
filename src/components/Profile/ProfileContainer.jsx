@@ -62,7 +62,6 @@ let mapStateToProps = (state) => {
     isFollowed: state.profilePage.isFollowed,
   };
 };
-withAuthRedirect(Profile);
 
 export default compose(
   connect(mapStateToProps, {

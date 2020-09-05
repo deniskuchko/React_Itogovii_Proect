@@ -10,6 +10,11 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { NavLink } from "react-router-dom";
 import "./SignIn.scss";
+import { Field, reduxForm } from "redux-form";
+import { FormControl } from "../common/FormsControls/FormControls";
+import { required, maxLengthCreator } from "../../utils/validatirs/validators";
+
+const Input = FormControl("input");
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
@@ -43,22 +48,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInSide(props) {
+/* 
+function SignInSideForm(props) {
   const classes = useStyles();
-  let newLogInEmail = props.logInInfo.newEmailTouchLogIn;
-  let newLogInPassword = props.logInInfo.newPasswordTouchLogIn;
-  let onClickPersonInfo = () => {
-    props.sendInfoPersonClickLogIn();
-    console.log(props.logInInfo);
-  };
-  let onEmailLogInChange = (e) => {
-    let body = e.target.value;
-    props.emailSendLogInChange(body);
-  };
-  let onPasswordLogInChange = (e) => {
-    let body = e.target.value;
-    props.passwordSendLogInChange(body);
-  };
 
   return (
     <Grid id="signInMain" container component="main" className={classes.root}>
@@ -72,43 +64,34 @@ export default function SignInSide(props) {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={newLogInEmail}
-              onChange={onEmailLogInChange}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={newLogInPassword}
-              onChange={onPasswordLogInChange}
-            />
-
-            <Button
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={onClickPersonInfo}
-            >
-              Sign In
-            </Button>
+          <form
+            className={classes.form}
+            noValidate
+            onSubmit={props.handleSubmit}
+          >
+            <div>
+              <Field
+                placeholder={"login"}
+                name={"login"}
+                component={Input}
+                validate={[required, maxLengthCreator25]}
+              />
+            </div>
+            <div>
+              <Field
+                placeholder={"password"}
+                name={"password"}
+                component={Input}
+                validate={[required, maxLengthCreator25]}
+              />
+            </div>
+            <div>
+              <Field type={"checkbox"} name={"rememberMe"} component={Input} />
+              Remember Me
+            </div>
+            <div>
+              <button>Login</button>
+            </div>
             <Grid container>
               <Grid item>
                 <NavLink to="/signup" variant="body2">
@@ -121,4 +104,50 @@ export default function SignInSide(props) {
       </Grid>
     </Grid>
   );
-}
+} */
+let maxLength25 = maxLengthCreator(25);
+
+const SignInSideForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <div>
+        <Field
+          placeholder={"login"}
+          name={"login"}
+          component={Input}
+          validate={[required, maxLength25]}
+        />
+      </div>
+      <div>
+        <Field
+          placeholder={"password"}
+          name={"password"}
+          component={Input}
+          validate={[required, maxLength25]}
+        />
+      </div>
+      <div>
+        <Field type={"checkbox"} name={"rememberMe"} component={Input} />
+        Remember Me
+      </div>
+      <div>
+        <button>Login</button>
+      </div>
+    </form>
+  );
+};
+const SignInSideReduxForm = reduxForm({
+  form: "login",
+})(SignInSideForm);
+
+const SignInSide = (props) => {
+  const onSubmit = (formData) => {
+    console.log(formData);
+  };
+  return (
+    <div>
+      <SignInSideReduxForm onSubmit={onSubmit} />
+    </div>
+  );
+};
+export default SignInSide;
