@@ -8,13 +8,17 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import "./SignIn.scss";
 import { Field, reduxForm } from "redux-form";
 import { FormControl } from "../common/FormsControls/FormControls";
 import { required, maxLengthCreator } from "../../utils/validatirs/validators";
+import { getLogin } from "../../redux/auth-reducer";
+import { connect } from "react-redux";
 
 const Input = FormControl("input");
+let maxLength25 = maxLengthCreator(25);
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
@@ -48,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-/* 
 function SignInSideForm(props) {
   const classes = useStyles();
 
@@ -74,7 +77,7 @@ function SignInSideForm(props) {
                 placeholder={"login"}
                 name={"login"}
                 component={Input}
-                validate={[required, maxLengthCreator25]}
+                validate={[required, maxLength25]}
               />
             </div>
             <div>
@@ -82,7 +85,7 @@ function SignInSideForm(props) {
                 placeholder={"password"}
                 name={"password"}
                 component={Input}
-                validate={[required, maxLengthCreator25]}
+                validate={[required, maxLength25]}
               />
             </div>
             <div>
@@ -104,50 +107,36 @@ function SignInSideForm(props) {
       </Grid>
     </Grid>
   );
-} */
-let maxLength25 = maxLengthCreator(25);
-
-const SignInSideForm = (props) => {
-  return (
-    <form onSubmit={props.handleSubmit}>
-      <div>
-        <Field
-          placeholder={"login"}
-          name={"login"}
-          component={Input}
-          validate={[required, maxLength25]}
-        />
-      </div>
-      <div>
-        <Field
-          placeholder={"password"}
-          name={"password"}
-          component={Input}
-          validate={[required, maxLength25]}
-        />
-      </div>
-      <div>
-        <Field type={"checkbox"} name={"rememberMe"} component={Input} />
-        Remember Me
-      </div>
-      <div>
-        <button>Login</button>
-      </div>
-    </form>
-  );
-};
+}
 const SignInSideReduxForm = reduxForm({
   form: "login",
 })(SignInSideForm);
 
-const SignInSide = (props) => {
-  const onSubmit = (formData) => {
-    console.log(formData);
+class SignInSide extends React.Component {
+  /* componentDidUpdate(prevProps, prevState) {
+    debugger;
+    if (prevProps.userId !== this.props.userId) {
+      return this.props.userId;
+    }
+  } */
+  onSubmit = (formData) => {
+    this.props.getLogin(formData.login, formData.password, formData.rememberMe);
   };
-  return (
-    <div>
-      <SignInSideReduxForm onSubmit={onSubmit} />
-    </div>
-  );
-};
-export default SignInSide;
+
+  render() {
+    if (this.props.isAuth) {
+      return <Redirect to={`/`} />;
+    }
+    return (
+      <div>
+        <SignInSideReduxForm onSubmit={this.onSubmit} />
+      </div>
+    );
+  }
+}
+let mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+  userId: state.auth.userId,
+});
+const SignInContainer = connect(mapStateToProps, { getLogin })(SignInSide);
+export default SignInContainer;

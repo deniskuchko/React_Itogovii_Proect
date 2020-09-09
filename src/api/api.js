@@ -11,8 +11,8 @@ let instanceAuth = axios.create({
   },
 });
 export const userAPI = {
-  getUsers: () => {
-    return instance.get(`/users`);
+  getUsers: (userId) => {
+    return instance.get(`/users/${userId}`);
   },
 
   getPosts: (currentPage, pageSize) => {
@@ -23,5 +23,11 @@ export const userAPI = {
 export const authApi = {
   me: () => {
     return instanceAuth.get("auth/me");
+  },
+  login: () => {
+    return instance.get("/users");
+  },
+  signUp: (login, email, password, rememberMe) => {
+    return instance.post(`/users`, { login, email, password, rememberMe });
   },
 };

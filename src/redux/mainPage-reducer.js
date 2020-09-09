@@ -92,8 +92,8 @@ export const getPostsThunk = (currentPage, pageSize) => {
 
       .then((data) => {
         dispatch(toogleIsFetching(false));
-        dispatch(setUsers(data.post));
-        dispatch(setTotalUsersCount(data.postCount));
+        dispatch(setUsers(data));
+        dispatch(setTotalUsersCount(data.length));
       })
       .catch((e) => alert(`error in get POSTS : ${e}`));
   };
@@ -105,7 +105,7 @@ export const getPostsPageThunk = (pageNumber, pageSize) => {
     dispatch(setCurrentPage(pageNumber));
     userAPI.getPosts(pageNumber, pageSize).then((response) => {
       dispatch(toogleIsFetching(false));
-      dispatch(setUsers(response.post));
+      dispatch(setUsers(response));
     });
   };
 };

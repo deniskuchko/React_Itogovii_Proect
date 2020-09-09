@@ -18,33 +18,42 @@ import {
   getIsFetching,
   getIsAuth,
 } from "../../redux/mainPage-selectors/mainPage-selectors";
+import { useState } from "react";
+import { useEffect } from "react";
 
-class MainPageContainer extends React.Component {
-  componentDidMount() {
+const MainPageContainerWithHooks = (props) => {
+  /* componentDidMount() {
     this.props.getPostsThunk(this.props.currentPage, this.props.pageSize);
   }
 
   onPageChange = (pageNumber) => {
     this.props.getPostsPageThunk(pageNumber, this.props.pageSize);
-  };
-  render() {
-    return (
-      <>
-        {this.props.isFetching ? <Preloader /> : null}
-        <MainPage
-          postCount={this.props.postCount}
-          pageSize={this.props.pageSize}
-          currentPage={this.props.currentPage}
-          post={this.props.post}
-          onPageChange={this.onPageChange}
-          unLike={this.props.unLike}
-          like={this.props.like}
-          isAuth={this.props.isAuth}
-        />
-      </>
-    );
-  }
-}
+  }; */
+  let [currentPage, setCurrentPage] = useState(props.currentPage);
+  let [pageSize, setPageSize] = useState(props.pageSize);
+
+  useEffect(() => {
+    props.getPostsThunk(props.currentPage, props.pageSize);
+  });
+  /* onPageChange = (pageNumber) => {
+    this.props.getPostsPageThunk(pageNumber, props.pageSize);
+  }; */
+  return (
+    <>
+      {props.isFetching ? <Preloader /> : null}
+      <MainPage
+        postCount={props.postCount}
+        pageSize={props.pageSize}
+        currentPage={props.currentPage}
+        post={props.post}
+        /*         onPageChange={onPageChange}
+         */ unLike={props.unLike}
+        like={props.like}
+        isAuth={props.isAuth}
+      />
+    </>
+  );
+};
 let mapStateToProps = (state) => {
   return {
     post: getPost(state),
@@ -61,4 +70,4 @@ export default connect(mapStateToProps, {
   unLike,
   getPostsThunk,
   getPostsPageThunk,
-})(MainPageContainer);
+})(MainPageContainerWithHooks);

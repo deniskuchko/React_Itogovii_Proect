@@ -3,8 +3,10 @@ import React from "react";
 import s from "./MainPage.module.scss";
 import userPhoto from "../../assets/image/user.png";
 import { NavLink, Redirect } from "react-router-dom";
+import { useState } from "react";
 
 let MainPage = (props) => {
+  /* let [like, setlike] = useState() */
   let pageCount = Math.ceil(props.postCount / props.pageSize);
   let page = [];
   for (let i = 1; i <= pageCount; i++) {

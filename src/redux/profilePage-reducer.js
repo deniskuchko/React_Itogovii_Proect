@@ -46,7 +46,7 @@ export const getProfileThunk = (userId) => {
     userAPI
       .getUsers(userId)
       .then((responce) => {
-        dispatsh(setUsersProfile(responce.data.user[`${userId}`]));
+        dispatsh(setUsersProfile(responce.data));
       })
       .catch((e) => alert(`error in get USERS : ${e}`));
   };

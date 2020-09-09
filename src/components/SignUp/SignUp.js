@@ -8,7 +8,12 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
+import { Field, reduxForm } from "redux-form";
+import { maxLengthCreator, required } from "../../utils/validatirs/validators";
+import { FormControl } from "../common/FormsControls/FormControls";
+import { connect } from "react-redux";
+import { setNewUserData } from "../../redux/auth-reducer";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -30,26 +35,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp(props) {
+const maxLength25 = maxLengthCreator(25);
+const Input = FormControl("input");
+
+function SignUpForm(props) {
   const classes = useStyles();
-  let newLogUpName = props.logUpInfo.newNameTouch;
-  let newLogUpEmail = props.logUpInfo.newEmailTouch;
-  let newLogUpPassword = props.logUpInfo.newPasswordTouch;
-  let onSendPersonInfoClick = () => {
-    props.sendInfoPersonClick();
-  };
-  let onNewNameLogUpChange = (e) => {
-    let body = e.target.value;
-    props.nameSendLogUpChange(body);
-  };
-  let onNewEmailLogUpChange = (e) => {
-    let body = e.target.value;
-    props.emailSendLogUpChange(body);
-  };
-  let onNewPasswordLogUpChange = (e) => {
-    let body = e.target.value;
-    props.passwordSendLogUpChange(body);
-  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -60,58 +51,52 @@ export default function SignUp(props) {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={props.handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                value={newLogUpName}
-                label="Name"
-                name="lastName"
-                autoComplete="lname"
-                onChange={onNewNameLogUpChange}
+              <Field
+                placeholder={"login"}
+                name={"login"}
+                component={Input}
+                validate={[required, maxLength25]}
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                value={newLogUpEmail}
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                onChange={onNewEmailLogUpChange}
+              <Field
+                placeholder={"email"}
+                name={"email"}
+                component={Input}
+                validate={[required, maxLength25]}
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                value={newLogUpPassword}
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={onNewPasswordLogUpChange}
+              <Field
+                placeholder={"password"}
+                name={"password"}
+                component={Input}
+                validate={[required, maxLength25]}
               />
+            </Grid>
+            <Grid item xs={12}>
+              <div>
+                <Field
+                  type={"checkbox"}
+                  name={"rememberMe"}
+                  component={Input}
+                />
+                Remember Me
+              </div>
             </Grid>
           </Grid>
-          <Button
+          <button>Sign Up</button>
+          {/* <Button
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={onSendPersonInfoClick}
           >
             Sign Up
-          </Button>
+          </Button> */}
           <Grid container justify="flex-end">
             <Grid item>
               <NavLink to="/signin" variant="body2">
@@ -124,3 +109,31 @@ export default function SignUp(props) {
     </Container>
   );
 }
+
+const SignUpReduxForm = reduxForm({
+  form: "signUp",
+})(SignUpForm);
+
+const SignUp = (props) => {
+  const onSubmit = (formData) => {
+    props.setNewUserData(
+      formData.login,
+      formData.email,
+      formData.password,
+      formData.rememberMe
+    );
+  };
+  if (props.isAuth) {
+    return <Redirect to={"/"} />;
+  }
+  return (
+    <div>
+      <SignUpReduxForm onSubmit={onSubmit} />
+    </div>
+  );
+};
+let mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+});
+const SignUpContainer = connect(mapStateToProps, { setNewUserData })(SignUp);
+export default SignUpContainer;

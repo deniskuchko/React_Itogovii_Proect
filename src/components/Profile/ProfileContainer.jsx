@@ -13,53 +13,35 @@ import { withRouter, Redirect } from "react-router-dom";
 import { userAPI } from "../../api/api";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
+import {
+  getProfile,
+  getIsFollowed,
+  getUserId,
+} from "../../redux/profile-selectors/profile-selectors";
 
 class ProfileContainer extends React.Component {
-  constructor() {
-    super();
-
-    this.id = 0;
-    this.user = {};
-    this.posts = [];
-  }
-
-  async componentDidMount() {
-    /* await this.getUserData();
-    await this.getUserPosts();
-
-    console.log(this.user);
-    console.log(this.posts); */
-
+  componentDidMount() {
     let userId = this.props.match.params.usersId;
 
-    !userId && (userId = 2);
+    if (!userId) {
+      userId = this.props.authorisedUserId;
+      if (!userId) {
+        return (userId = this.props.history.push("/login"));
+      }
+    }
+
     this.props.getProfileThunk(userId);
   }
 
-  /* .get("http://localhost:3000/users" + userId)              !!!!!  как создать в локал хосте объект с адресом .../uder/1
-      .then((response) => {
-        console.log(response.data);
-        this.props.setUsersProfile(response.data);
-      }); */
-  /* async getUserData() {
-    const user = await axios.get(`http://localhost:3000/users`);
-
-    this.user = user.data;
-  }
-
-  async getUserPosts() {
-    const posts = await axios.get("http://localhost:3000/posts");
-
-    this.posts = (posts.data || []).filter(({ userId }) => userId === this.id);
-  } */
   render() {
     return <Profile {...this.props} profile={this.props.profile} />;
   }
 }
 let mapStateToProps = (state) => {
   return {
-    profile: state.profilePage.profile,
-    isFollowed: state.profilePage.isFollowed,
+    profile: getProfile(state),
+    isFollowed: getIsFollowed(state),
+    authorisedUserId: getUserId(state),
   };
 };
 

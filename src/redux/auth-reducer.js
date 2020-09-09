@@ -4,6 +4,7 @@ const SET_USER_DATA = "SET_USER_DATA";
 
 let initialState = {
   userId: null,
+  login: null,
   email: null,
   password: null,
   isAuth: false,
@@ -21,12 +22,14 @@ const authReduser = (state = initialState, action) => {
   }
 };
 
-export const setUserData = (userId, email, password) => ({
+export const setUserData = (userId, login, email, password, isAuth) => ({
   type: SET_USER_DATA,
   data: {
     userId,
+    login,
     email,
     password,
+    isAuth,
   },
 });
 
@@ -41,4 +44,40 @@ export const getAuthUserData = () => {
     });
   };
 };
+export const getLogin = (login, password, rememberMe) => {
+  return (dispatch) => {
+    authApi.login().then((response) => {
+      let arrUsers = response.data;
+      let userLogin = arrUsers.filter((el) => {
+        return el.login === login && el.password === password;
+      });
+      userLogin[0]
+        ? dispatch(
+            setUserData(
+              userLogin[0].id,
+              userLogin[0].login,
+              userLogin[0].email,
+              userLogin[0].password,
+              true
+            )
+          )
+        : alert("SignUp");
+    });
+  };
+};
+export const setNewUserData = (login, email, password, rememberMe) => {
+  return (dispatch) => {
+    authApi
+      .signUp(login, email, password, rememberMe)
+      .then((response) => {
+        return response.data;
+      })
+      .then((data) => {
+        dispatch(
+          setUserData(data.id, data.login, data.email, data.password, true)
+        );
+      });
+  };
+};
+
 export default authReduser;
