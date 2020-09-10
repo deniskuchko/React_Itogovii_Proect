@@ -1,6 +1,6 @@
 import * as axios from "axios";
 let instance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "http://localhost:3000/",
 });
 
 let instanceAuth = axios.create({
@@ -19,7 +19,17 @@ export const userAPI = {
     return instance.get(`posts/?page=${currentPage}&count=${pageSize}`);
   },
 };
-
+export const postAPI = {
+  setNewPost: (title, articleAbout, textOfArticle, keywords, userId) => {
+    return instance.post("/posts", {
+      title,
+      articleAbout,
+      textOfArticle,
+      keywords,
+      userId,
+    });
+  },
+};
 export const authApi = {
   me: () => {
     return instanceAuth.get("auth/me");

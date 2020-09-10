@@ -21,7 +21,8 @@ import {
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.match.params.usersId;
+    let userId = this.props.authorisedUserId;
+    //this.props.match.params.usersId;
 
     if (!userId) {
       userId = this.props.authorisedUserId;
@@ -29,7 +30,7 @@ class ProfileContainer extends React.Component {
         return (userId = this.props.history.push("/login"));
       }
     }
-
+    debugger;
     this.props.getProfileThunk(userId);
   }
 
@@ -41,7 +42,7 @@ let mapStateToProps = (state) => {
   return {
     profile: getProfile(state),
     isFollowed: getIsFollowed(state),
-    authorisedUserId: getUserId(state),
+    authorisedUserId: state.auth.userId,
   };
 };
 

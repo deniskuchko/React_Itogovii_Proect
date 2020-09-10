@@ -123,10 +123,14 @@
       "name": "Max",
       "image": "https://uploads.gravitatedesign.com/2016/05/07012344/Joe.jpg",
       "title": "Great post",
-      "value": "lorem ipsum dolor sit amet",
+      "articleAbout": "about lorem",
+      "textOfArticle": "lorem ipsum dolor sit amet",
       "likes": 0,
       "favorited": true,
-      "keywords": ["lorem", "sit"],
+      "keywords": [
+        "lorem",
+        "sit"
+      ],
       "userId": 0
     },
     {
@@ -134,10 +138,13 @@
       "name": "Petr",
       "image": "https://peril.by/wp-content/uploads/2015/12/avada-team2-174543104.jpg",
       "title": "Low quality post",
-      "value": "Mama i m coming home",
+      "articleAbout": "about mama",
+      "textOfArticle": "Mama i m coming home",
       "likes": 0,
       "favorited": false,
-      "keywords": ["mama"],
+      "keywords": [
+        "mama"
+      ],
       "userId": 1
     },
     {
@@ -145,11 +152,54 @@
       "name": "Denis",
       "image": "https://churchm.ag/wp-content/uploads/2014/09/david_8-24-12-SQ.jpg",
       "title": "Brand new pp",
-      "value": "i need a cure",
+      "articleAbout": "about i need",
+      "textOfArticle": "i need a cure",
       "likes": 0,
       "favorited": true,
-      "keywords": ["cure"],
+      "keywords": [
+        "cure"
+      ],
       "userId": 3
+    },
+    {
+      "title": "title",
+      "articleAbout": "about",
+      "textOfArticle": "First post",
+      "keywords": "post first",
+      "userId": 10,
+      "id": 3
+    },
+    {
+      "title": "tregret",
+      "articleAbout": "regwer",
+      "textOfArticle": "wregwre",
+      "keywords": "rwegw",
+      "userId": 10,
+      "id": 4
+    },
+    {
+      "title": "title",
+      "articleAbout": "about",
+      "textOfArticle": "sdfwes",
+      "keywords": "articles",
+      "userId": 10,
+      "id": 5
+    },
+    {
+      "title": "title",
+      "articleAbout": "wedf",
+      "textOfArticle": "wef",
+      "keywords": "wef",
+      "userId": 10,
+      "id": 6
+    },
+    {
+      "title": "title",
+      "articleAbout": "regwer",
+      "textOfArticle": "ef",
+      "keywords": "articles",
+      "userId": 10,
+      "id": 7
     }
   ]
 }

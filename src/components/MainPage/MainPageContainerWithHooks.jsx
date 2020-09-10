@@ -32,9 +32,7 @@ const MainPageContainerWithHooks = (props) => {
   let [currentPage, setCurrentPage] = useState(props.currentPage);
   let [pageSize, setPageSize] = useState(props.pageSize);
 
-  useEffect(() => {
-    props.getPostsThunk(props.currentPage, props.pageSize);
-  });
+  useEffect(() => {});
   /* onPageChange = (pageNumber) => {
     this.props.getPostsPageThunk(pageNumber, props.pageSize);
   }; */

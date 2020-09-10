@@ -14,6 +14,7 @@ import { initialise } from "../../redux/app-reducer";
 import { compose } from "redux";
 import Preloader from "../common/Preloader/Preloader";
 import MainPageContainerWithHooks from "../MainPage/MainPageContainerWithHooks";
+import MyArticles from "../MyArticles/MyArticles";
 
 class App extends React.Component {
   componentDidMount() {
@@ -42,8 +43,11 @@ class App extends React.Component {
             path="/profile/:usersId?"
             render={() => <ProfileContainer />}
           ></Route>
+          <Route path="/myarticle" render={() => <MyArticles />}></Route>
+          {/* <NavLink to="/myarticle">New article</NavLink>
+      <NavLink to="/settings">Settings</NavLink>
+      <NavLink to="/myprofile">{props.login}</NavLink> */}
         </div>
-        {/* <StickyFooter /> */}
       </div>
     );
   }

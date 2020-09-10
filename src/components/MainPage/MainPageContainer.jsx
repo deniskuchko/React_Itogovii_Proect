@@ -18,6 +18,7 @@ import {
   getIsFetching,
   getIsAuth,
 } from "../../redux/mainPage-selectors/mainPage-selectors";
+import MyArticles from "../MyArticles/MyArticles";
 
 class MainPageContainer extends React.Component {
   componentDidMount() {
