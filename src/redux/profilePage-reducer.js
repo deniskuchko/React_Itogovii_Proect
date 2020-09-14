@@ -42,13 +42,12 @@ export const unFollow = () => ({
   type: UNFOLLOW,
 });
 export const getProfileThunk = (userId) => {
-  return (dispatsh) => {
-    userAPI
-      .getUsers(userId)
-      .then((responce) => {
-        dispatsh(setUsersProfile(responce.data));
-      })
-      .catch((e) => alert(`error in get USERS : ${e}`));
+  return async (dispatsh) => {
+    let responce = await userAPI.getUsers(userId);
+
+    dispatsh(setUsersProfile(responce.data));
+    /* 
+      .catch((e) => alert(`error in get USERS : ${e}`)); */
   };
 };
 export default profilePageReducers;

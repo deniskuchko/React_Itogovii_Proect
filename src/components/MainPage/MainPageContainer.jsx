@@ -1,12 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import {
-  like,
-  unLike,
-  getPostsThunk,
-  getPostsPageThunk,
-} from "../../redux/mainPage-reducer";
+import { like, unLike, requestPosts } from "../../redux/mainPage-reducer";
 import MainPage from "./MainPage";
 import Preloader from "../common/Preloader/Preloader";
 
@@ -22,11 +17,11 @@ import MyArticles from "../MyArticles/MyArticles";
 
 class MainPageContainer extends React.Component {
   componentDidMount() {
-    this.props.getPostsThunk(this.props.currentPage, this.props.pageSize);
+    this.props.requestPosts(this.props.currentPage, this.props.pageSize);
   }
 
   onPageChange = (pageNumber) => {
-    this.props.getPostsPageThunk(pageNumber, this.props.pageSize);
+    this.props.requestPosts(pageNumber, this.props.pageSize);
   };
   render() {
     return (
@@ -60,6 +55,5 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   like,
   unLike,
-  getPostsThunk,
-  getPostsPageThunk,
+  requestPosts,
 })(MainPageContainer);

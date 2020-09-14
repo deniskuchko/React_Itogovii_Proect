@@ -6,7 +6,7 @@ const MenuLogOut = (props) => {
     <div className="menuLogOut">
       <NavLink to="/myarticle">New article</NavLink>
       <NavLink to="/settings">Settings</NavLink>
-      <NavLink to="/myprofile">{props.login}</NavLink>
+      <NavLink to={`/profile/${props.userId}`}>{props.login}</NavLink>
     </div>
   );
 };

@@ -59,7 +59,8 @@ const MyArticlesForm = (props) => {
 
       <div>
         <button>
-          <IconLabelButtons />
+          Save
+          {/* <IconLabelButtons /> */}
         </button>
       </div>
     </form>
@@ -70,6 +71,7 @@ const MyArticlesReduxForm = reduxForm({ form: "articles" })(MyArticlesForm);
 
 const MyArticles = (props) => {
   const onSubmit = (formData) => {
+    debugger;
     props.setNewArticleReducer(
       formData.title,
       formData.about,
@@ -78,13 +80,18 @@ const MyArticles = (props) => {
       props.userId
     );
   };
+  if (props.isArticle) {
+    return <Redirect to={`/profile/${props.userId}`} />;
+  }
   if (!props.userId) {
     return <Redirect to="/signin" />;
   }
+
   return <MyArticlesReduxForm onSubmit={onSubmit} />;
 };
 
 const mapStateToProps = (state) => ({
   userId: state.auth.userId,
+  isArticle: state.myArticles.isArticle,
 });
 export default connect(mapStateToProps, { setNewArticleReducer })(MyArticles);

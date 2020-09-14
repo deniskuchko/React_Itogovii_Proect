@@ -115,6 +115,12 @@
       "email": "denis.kuchko@mail.ru",
       "password": "password",
       "id": 10
+    },
+    {
+      "login": "alexMen",
+      "email": "alexMen@mail.ru",
+      "password": "123",
+      "id": 11
     }
   ],
   "posts": [
@@ -162,44 +168,12 @@
       "userId": 3
     },
     {
-      "title": "title",
-      "articleAbout": "about",
-      "textOfArticle": "First post",
-      "keywords": "post first",
-      "userId": 10,
+      "title": "asdvadva",
+      "articleAbout": "asfcd",
+      "textOfArticle": "wqd",
+      "keywords": "ads",
+      "userId": 11,
       "id": 3
-    },
-    {
-      "title": "tregret",
-      "articleAbout": "regwer",
-      "textOfArticle": "wregwre",
-      "keywords": "rwegw",
-      "userId": 10,
-      "id": 4
-    },
-    {
-      "title": "title",
-      "articleAbout": "about",
-      "textOfArticle": "sdfwes",
-      "keywords": "articles",
-      "userId": 10,
-      "id": 5
-    },
-    {
-      "title": "title",
-      "articleAbout": "wedf",
-      "textOfArticle": "wef",
-      "keywords": "wef",
-      "userId": 10,
-      "id": 6
-    },
-    {
-      "title": "title",
-      "articleAbout": "regwer",
-      "textOfArticle": "ef",
-      "keywords": "articles",
-      "userId": 10,
-      "id": 7
     }
   ]
 }

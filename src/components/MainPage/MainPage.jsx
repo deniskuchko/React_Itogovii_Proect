@@ -6,7 +6,6 @@ import { NavLink, Redirect } from "react-router-dom";
 import { useState } from "react";
 
 let MainPage = (props) => {
-  /* let [like, setlike] = useState() */
   let pageCount = Math.ceil(props.postCount / props.pageSize);
   let page = [];
   for (let i = 1; i <= pageCount; i++) {
@@ -33,7 +32,7 @@ let MainPage = (props) => {
         <div key={u.id} className={s.personArticle}>
           <span className={s.infoPerson}>
             <div className={s.personIMGMainPage}>
-              <NavLink to={"/profile/" + u.id}>
+              <NavLink to={"/profile/" + u.userId}>
                 <img
                   src={u.image !== null ? u.image : userPhoto}
                   className={s.userPhoto}
@@ -41,8 +40,15 @@ let MainPage = (props) => {
               </NavLink>
             </div>
             <div>{u.name}</div>
-            <div>{u.title}</div>
-            <div>{u.value}</div>
+
+            <NavLink to={"/post/" + u.id}>
+              <div>
+                <div>title: {u.title}</div>
+                <div> Article: {u.articleAbout}</div>
+
+                <div>Text of Article: {u.textOfArticle}</div>
+              </div>
+            </NavLink>
           </span>
           <span>
             {u.favorited ? (

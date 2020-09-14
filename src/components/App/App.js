@@ -15,6 +15,7 @@ import { compose } from "redux";
 import Preloader from "../common/Preloader/Preloader";
 import MainPageContainerWithHooks from "../MainPage/MainPageContainerWithHooks";
 import MyArticles from "../MyArticles/MyArticles";
+import PostOfUserContainer from "../PostOfUser/PostOfUserContainer";
 
 class App extends React.Component {
   componentDidMount() {
@@ -42,6 +43,10 @@ class App extends React.Component {
           <Route
             path="/profile/:usersId?"
             render={() => <ProfileContainer />}
+          ></Route>
+          <Route
+            path="/post/:id?"
+            render={() => <PostOfUserContainer />}
           ></Route>
           <Route path="/myarticle" render={() => <MyArticles />}></Route>
           {/* <NavLink to="/myarticle">New article</NavLink>

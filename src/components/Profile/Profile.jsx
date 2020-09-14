@@ -13,7 +13,11 @@ let Profile = (props) => {
       <img
         src={
           props.profile.profileImage
-        } /* {props.profile.profileImage ? `${props.profile.profileImage}` : userPhoto} */
+            ? `${props.profile.profileImage}`
+            : userPhoto
+        }
+        /* props.profile.profileImage */
+        /* {props.profile.profileImage ? `${props.profile.profileImage}` : userPhoto} */
         className={s.userPhoto}
       />
       <div>Name:{props.profile.name}</div>

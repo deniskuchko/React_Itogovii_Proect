@@ -8,7 +8,7 @@ const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const TOOGLE_IS_FETCHING = "TOOGLE_IS_FETCHING";
 let initialState = {
   post: [],
-  pageSize: 1,
+  pageSize: 10,
   postCount: 0,
   currentPage: 1,
   isFetching: true,
@@ -49,7 +49,7 @@ const mainPageReducers = (state = initialState, action) => {
     case SET_TOTAL_USERS_COUNT:
       return {
         ...state,
-        postCount: action.count,
+        postCount: action.postCount,
       };
     case TOOGLE_IS_FETCHING:
       return { ...state, isFetching: action.isFetching };
@@ -75,38 +75,34 @@ export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
 });
-export const setTotalUsersCount = (count) => ({
+export const setTotalUsersCount = (postCount) => ({
   type: SET_TOTAL_USERS_COUNT,
-  count,
+  postCount,
 });
 export const toogleIsFetching = (isFetching) => ({
   type: TOOGLE_IS_FETCHING,
   isFetching,
 });
-export const getPostsThunk = (currentPage, pageSize) => {
-  return (dispatch) => {
+export const requestPosts = (currentPage, pageSize) => {
+  return async (dispatch) => {
     dispatch(toogleIsFetching(true));
-    userAPI
-      .getPosts(currentPage, pageSize)
-      .then((response) => response.data)
-
-      .then((data) => {
-        dispatch(toogleIsFetching(false));
-        dispatch(setUsers(data));
-        dispatch(setTotalUsersCount(data.length));
-      })
-      .catch((e) => alert(`error in get POSTS : ${e}`));
+    dispatch(setCurrentPage(currentPage));
+    let response = await userAPI.getPosts(currentPage, pageSize);
+    dispatch(toogleIsFetching(false));
+    dispatch(setUsers(response.data));
+    dispatch(setTotalUsersCount(response.data.length));
   };
 };
-export const getPostsPageThunk = (pageNumber, pageSize) => {
+/* export const getPostsPageThunk = (pageNumber, pageSize) => {
   return (dispatch) => {
     dispatch(toogleIsFetching(true));
 
     dispatch(setCurrentPage(pageNumber));
     userAPI.getPosts(pageNumber, pageSize).then((response) => {
       dispatch(toogleIsFetching(false));
-      dispatch(setUsers(response));
+      dispatch(setUsers(response.data));
+      dispatch(setTotalUsersCount(response.data.length));
     });
   };
-};
+}; */
 export default mainPageReducers;

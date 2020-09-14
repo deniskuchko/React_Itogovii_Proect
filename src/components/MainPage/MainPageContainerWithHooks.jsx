@@ -1,12 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import {
-  like,
-  unLike,
-  getPostsThunk,
-  getPostsPageThunk,
-} from "../../redux/mainPage-reducer";
+import { like, unLike, requestPosts } from "../../redux/mainPage-reducer";
 import MainPage from "./MainPage";
 import Preloader from "../common/Preloader/Preloader";
 
@@ -66,6 +61,5 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   like,
   unLike,
-  getPostsThunk,
-  getPostsPageThunk,
+  requestPosts,
 })(MainPageContainerWithHooks);

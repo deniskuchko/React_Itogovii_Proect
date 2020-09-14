@@ -8,7 +8,11 @@ const Menu = (props) => {
   return (
     <div className="menu">
       <NavLink to="/">Home</NavLink>
-      {props.isAuth ? <MenuLogOut login={props.login} /> : <MenuLogIn />}
+      {props.isAuth ? (
+        <MenuLogOut login={props.login} userId={props.userId} />
+      ) : (
+        <MenuLogIn />
+      )}
     </div>
   );
 };

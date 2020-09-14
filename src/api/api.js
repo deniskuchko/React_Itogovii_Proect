@@ -16,7 +16,12 @@ export const userAPI = {
   },
 
   getPosts: (currentPage, pageSize) => {
-    return instance.get(`posts/?page=${currentPage}&count=${pageSize}`);
+    return instance
+      .get(`posts?_page=${currentPage}&_limit=${pageSize}`)
+      .then((response) => response);
+  },
+  getMyPosts: () => {
+    return instance.get("/posts");
   },
 };
 export const postAPI = {
@@ -28,6 +33,9 @@ export const postAPI = {
       keywords,
       userId,
     });
+  },
+  getPostId: (postId) => {
+    return instance.get(`/post/{postId}`);
   },
 };
 export const authApi = {

@@ -21,16 +21,16 @@ import {
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.authorisedUserId;
+    let userId = this.props.match.params.usersId;
     //this.props.match.params.usersId;
 
-    if (!userId) {
+    if (!this.props.isAuth) {
       userId = this.props.authorisedUserId;
       if (!userId) {
         return (userId = this.props.history.push("/login"));
       }
     }
-    debugger;
+
     this.props.getProfileThunk(userId);
   }
 
@@ -43,6 +43,7 @@ let mapStateToProps = (state) => {
     profile: getProfile(state),
     isFollowed: getIsFollowed(state),
     authorisedUserId: state.auth.userId,
+    isAuth: state.auth.isAuth,
   };
 };
 

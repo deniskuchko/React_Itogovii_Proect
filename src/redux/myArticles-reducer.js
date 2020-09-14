@@ -1,6 +1,7 @@
 import { postAPI } from "../api/api";
 
 const SET_NEW_POST = "SET_NEW_POST";
+const SET_SAVE_NEW_ARTICLE = "SET_SAVE_NEW_ARTICLE";
 
 let initialState = {
   title: null,
@@ -8,18 +9,21 @@ let initialState = {
   textOfArticle: null,
   keywords: [],
   userId: null,
+  isArticle: false,
 };
 
 const myArticlesReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_NEW_POST:
-      return { ...state, ...action.postload };
+      return { ...state, ...action.postload, isArticle: true };
+    case SET_SAVE_NEW_ARTICLE:
+      return { ...state, isArticle: false };
     default:
       return state;
   }
 };
 
-export const setNewArticle = (
+const setNewArticle = (
   title,
   articleAbout,
   textOfArticle,
@@ -30,19 +34,27 @@ export const setNewArticle = (
   postload: { title, articleAbout, textOfArticle, keywords, userId },
 });
 
+const setSaveNewArticle = () => ({
+  type: SET_SAVE_NEW_ARTICLE,
+});
+
 export const setNewArticleReducer = (
   title,
   articleAbout,
   textOfArticle,
   keywords,
   userId
-) => (dispatch) => {
-  postAPI
-    .setNewPost(title, articleAbout, textOfArticle, keywords, userId)
-    .then((response) => {
-      console.log(response.data);
-      //dispatch(setNewArticle(response.data))
-    });
+) => async (dispatch) => {
+  let response = await postAPI.setNewPost(
+    title,
+    articleAbout,
+    textOfArticle,
+    keywords,
+    userId
+  );
+
+  dispatch(setNewArticle(response.data));
+  dispatch(setSaveNewArticle());
 };
 
 export default myArticlesReducer;
