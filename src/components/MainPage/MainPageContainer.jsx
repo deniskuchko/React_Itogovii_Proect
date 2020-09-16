@@ -28,7 +28,7 @@ class MainPageContainer extends React.Component {
       <>
         {this.props.isFetching ? <Preloader /> : null}
         <MainPage
-          postCount={this.props.postCount}
+          totalItemsCount={this.props.postCount}
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
           post={this.props.post}

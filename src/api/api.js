@@ -16,9 +16,9 @@ export const userAPI = {
   },
 
   getPosts: (currentPage, pageSize) => {
-    return instance
-      .get(`posts?_page=${currentPage}&_limit=${pageSize}`)
-      .then((response) => response);
+    return instance.get(`posts?_page=${currentPage}&_limit=${pageSize}`);
+    /*       .then((response) => response);
+     */
   },
   getMyPosts: () => {
     return instance.get("/posts");
@@ -35,7 +35,10 @@ export const postAPI = {
     });
   },
   getPostId: (postId) => {
-    return instance.get(`/post/{postId}`);
+    return instance.get(`/posts/${postId}`);
+  },
+  setLikePost: (postId, likes) => {
+    return instance.post(`/posts/${postId}`, { likes });
   },
 };
 export const authApi = {

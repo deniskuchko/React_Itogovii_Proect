@@ -8,7 +8,6 @@ import ProfileContainer from "../Profile/ProfileContainer";
 import HeaderContainer from "../header/HeaderContainer";
 import SignInContainer from "../SignIn/SignIn";
 import SignUpContainer from "../SignUp/SignUp";
-import { getAuthUserData } from "../../redux/auth-reducer";
 import { connect } from "react-redux";
 import { initialise } from "../../redux/app-reducer";
 import { compose } from "redux";
