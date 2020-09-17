@@ -93,16 +93,4 @@ export const requestPosts = (currentPage, pageSize) => {
     dispatch(setUsers(response.data));
   };
 };
-/* export const getPostsPageThunk = (pageNumber, pageSize) => {
-  return (dispatch) => {
-    dispatch(toogleIsFetching(true));
-
-    dispatch(setCurrentPage(pageNumber));
-    userAPI.getPosts(pageNumber, pageSize).then((response) => {
-      dispatch(toogleIsFetching(false));
-      dispatch(setUsers(response.data));
-      dispatch(setTotalUsersCount(response.data.length));
-    });
-  };
-}; */
 export default mainPageReducers;

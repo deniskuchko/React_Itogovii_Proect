@@ -7,6 +7,7 @@ import {
   decreasePostLikes,
   getPostId,
   increasePostLikes,
+  setPost,
 } from "../../redux/post-reducer";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -18,17 +19,10 @@ class PostOfUserContainer extends React.Component {
     const postId = this.props.match.params.id;
     this.props.getPostId(postId);
   }
-  /* const [postId, setPost] = useState(props.match.params.id);
 
-  useEffect(() => {
-    setPost(props.match.params.id);
-    getPostId(postId);
-  }, [props]);
-  debugger; */
   render() {
     return (
       <>
-        {/* {this.props.isFetching ? <Preloader /> : null} */}
         <PostOfUser
           post={this.props.post}
           isLike={this.props.isLike}
@@ -47,6 +41,11 @@ let mapStateToProps = (state) => {
 };
 
 export default compose(
-  connect(mapStateToProps, { getPostId, decreasePostLikes, increasePostLikes }),
+  connect(mapStateToProps, {
+    getPostId,
+    decreasePostLikes,
+    increasePostLikes,
+    setPost,
+  }),
   withRouter
 )(PostOfUserContainer);

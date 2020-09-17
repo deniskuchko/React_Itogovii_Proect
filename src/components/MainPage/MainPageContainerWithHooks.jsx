@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { like, unLike, requestPosts } from "../../redux/mainPage-reducer";
-import MainPage from "./MainPage";
 import Preloader from "../common/Preloader/Preloader";
 
 import {
@@ -15,6 +14,7 @@ import {
 } from "../../redux/mainPage-selectors/mainPage-selectors";
 import { useState } from "react";
 import { useEffect } from "react";
+import MainPage from "./MainPage";
 
 const MainPageContainerWithHooks = (props) => {
   /* componentDidMount() {

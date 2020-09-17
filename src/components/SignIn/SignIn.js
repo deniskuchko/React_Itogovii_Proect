@@ -9,12 +9,13 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { NavLink, Redirect } from "react-router-dom";
-import "./SignIn.scss";
 import { Field, reduxForm } from "redux-form";
 import { FormControl } from "../common/FormsControls/FormControls";
 import { required, maxLengthCreator } from "../../utils/validatirs/validators";
 import { getLogin } from "../../redux/auth-reducer";
 import { connect } from "react-redux";
+
+import "./SignIn.css";
 
 const Input = FormControl("input");
 let maxLength25 = maxLengthCreator(25);

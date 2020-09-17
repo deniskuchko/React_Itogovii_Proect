@@ -1,9 +1,11 @@
 import React from "react";
 
 import userPhoto from "../../assets/image/user.png";
-import s from "./Profile.module.scss";
 import Preloader from "../common/Preloader/Preloader";
 import * as axios from "axios";
+import ArticlesOfLoginUserContainer from "../ArticlesOfLoginUser/ArticlesOfLoginUserContainer";
+import s from "./Profile.module.css";
+
 let Profile = (props) => {
   if (!props.profile) {
     return <Preloader />;
@@ -20,9 +22,8 @@ let Profile = (props) => {
         /* {props.profile.profileImage ? `${props.profile.profileImage}` : userPhoto} */
         className={s.userPhoto}
       />
-      <div>Name:{props.profile.name}</div>
+      <div>Name:{props.profile.login}</div>
       <div>email:{props.profile.email}</div>
-      <div>nickname:{props.profile.nickname}</div>
       {props.profile.followed ? (
         <button
           onClick={() => {
@@ -30,10 +31,6 @@ let Profile = (props) => {
               console.log(response);
               props.follow();
             });
-            /* axios.post(`http://localhost:3000/posts`).then((response) => {
-              console.log(response);
-              props.follow(props.profile.id);
-            }); */
           }}
         >
           unfollow
@@ -49,6 +46,9 @@ let Profile = (props) => {
           follow
         </button>
       )}
+      <div>
+        <ArticlesOfLoginUserContainer />
+      </div>
     </div>
   );
 };

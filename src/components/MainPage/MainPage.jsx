@@ -1,9 +1,10 @@
 import React from "react";
 
-import s from "./MainPage.module.scss";
 import userPhoto from "../../assets/image/user.png";
 import { NavLink, Redirect } from "react-router-dom";
 import { useState } from "react";
+
+import s from "./MainPage.module.css";
 
 let MainPage = ({
   totalItemsCount,
@@ -90,7 +91,7 @@ let MainPage = ({
                   props.unLike(u.id);
                 }}
               >
-                0
+                Unfollow
               </button>
             ) : (
               <button
@@ -98,7 +99,7 @@ let MainPage = ({
                   props.like(u.id);
                 }}
               >
-                1
+                Follow
               </button>
             )}
           </span>

@@ -1,10 +1,5 @@
 import React from "react";
 import { Route, withRouter } from "react-router-dom";
-
-import "./App.scss";
-
-import MainPageContainer from "../MainPage/MainPageContainer";
-import ProfileContainer from "../Profile/ProfileContainer";
 import HeaderContainer from "../header/HeaderContainer";
 import SignInContainer from "../SignIn/SignIn";
 import SignUpContainer from "../SignUp/SignUp";
@@ -15,6 +10,11 @@ import Preloader from "../common/Preloader/Preloader";
 import MainPageContainerWithHooks from "../MainPage/MainPageContainerWithHooks";
 import MyArticles from "../MyArticles/MyArticles";
 import PostOfUserContainer from "../PostOfUser/PostOfUserContainer";
+import StickyFooter from "../Footer/Footer";
+
+import "./App.css";
+import MainPageContainer from "../MainPage/MainPageContainer";
+import ProfileContainer from "../Profile/ProfileContainer";
 
 class App extends React.Component {
   componentDidMount() {
@@ -52,6 +52,7 @@ class App extends React.Component {
       <NavLink to="/settings">Settings</NavLink>
       <NavLink to="/myprofile">{props.login}</NavLink> */}
         </div>
+        <StickyFooter />
       </div>
     );
   }

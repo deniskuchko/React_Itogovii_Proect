@@ -37,13 +37,34 @@ export const postAPI = {
   getPostId: (postId) => {
     return instance.get(`/posts/${postId}`);
   },
-  setLikePost: (postId, likes) => {
-    return instance.post(`/posts/${postId}`, { likes });
+  setLikePost: (
+    id,
+    name,
+    image,
+    title,
+    articleAbout,
+    textOfArticle,
+    likes,
+    favorited,
+    keywords,
+    userId
+  ) => {
+    return instance.put(`/posts/${id}`, {
+      name,
+      image,
+      title,
+      articleAbout,
+      textOfArticle,
+      likes,
+      favorited,
+      keywords,
+      userId,
+    });
   },
 };
 export const authApi = {
   me: () => {
-    return instanceAuth.get("auth/me");
+    return instance.get("/users");
   },
   login: () => {
     return instance.get("/users");

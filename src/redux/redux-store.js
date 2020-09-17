@@ -7,6 +7,7 @@ import { reducer as formReducer } from "redux-form";
 import appReduser from "./app-reducer";
 import myArticlesReducer from "./myArticles-reducer";
 import postPageReducers from "./post-reducer";
+import userPostsReducer from "./userPosts-reduser";
 
 let reducers = combineReducers({
   mainPage: mainPageReducers,
@@ -16,6 +17,7 @@ let reducers = combineReducers({
   app: appReduser,
   myArticles: myArticlesReducer,
   post: postPageReducers,
+  userPosts: userPostsReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

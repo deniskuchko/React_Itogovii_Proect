@@ -2,8 +2,9 @@ import React from "react";
 
 import Menu from "./Menu/Menu";
 
-import "./Header.scss";
 import { NavLink } from "react-router-dom";
+
+import "./Header.css";
 
 const Header = (props) => {
   return (

@@ -1,0 +1,16 @@
+.myPosts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 1px blue solid;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.myPosts span {
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+.myPosts div {
+  width: 70%;
+}

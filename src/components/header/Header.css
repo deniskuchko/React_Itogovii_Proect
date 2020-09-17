@@ -1,0 +1,13 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header a {
+  color: green;
+}
+
+header a:hover {
+  color: yellowgreen;
+  text-decoration: none;
+}

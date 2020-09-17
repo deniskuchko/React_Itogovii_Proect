@@ -1,0 +1,8 @@
+.menu a {
+  color: gray;
+  margin: 0 5px;
+  font-size: 12px;
+}
+.menu a:hover {
+  color: #000;
+}

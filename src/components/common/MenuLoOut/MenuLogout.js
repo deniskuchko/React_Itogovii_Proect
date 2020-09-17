@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./MenuLogOut.scss";
+import "./MenuLogOut.css";
 const MenuLogOut = (props) => {
   return (
     <div className="menuLogOut">

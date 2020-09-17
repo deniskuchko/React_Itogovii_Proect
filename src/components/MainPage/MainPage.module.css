@@ -16,21 +16,21 @@
   margin: 20px auto;
   border: 1px solid black;
   border-radius: 40px;
-  .infoPerson {
-    margin: 10px 0;
-    border-radius: 50%;
-    .personIMGMainPage {
-      overflow: hidden;
-      text-align: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      .userPhoto {
-        width: 40px;
-        height: 40px;
-        transition: 1s;
-        margin-bottom: 10px;
-      }
-    }
-  }
+}
+.personArticle .infoPerson {
+  margin: 10px 0;
+  border-radius: 50%;
+}
+.personArticle .personIMGMainPage {
+  overflow: hidden;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.personArticle .userPhoto {
+  width: 40px;
+  height: 40px;
+  transition: 1s;
+  margin-bottom: 10px;
 }

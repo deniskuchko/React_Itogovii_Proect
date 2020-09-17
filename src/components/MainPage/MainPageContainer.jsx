@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { like, unLike, requestPosts } from "../../redux/mainPage-reducer";
-import MainPage from "./MainPage";
 import Preloader from "../common/Preloader/Preloader";
 
 import {
@@ -14,6 +13,7 @@ import {
   getIsAuth,
 } from "../../redux/mainPage-selectors/mainPage-selectors";
 import MyArticles from "../MyArticles/MyArticles";
+import MainPage from "./MainPage";
 
 class MainPageContainer extends React.Component {
   componentDidMount() {
