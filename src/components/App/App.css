@@ -3,7 +3,26 @@
   min-height: 400px;
   font-size: 20px;
   font-family: "Franklin Gothic", sans-serif;
+  max-width: 100%;
 }
 .wrapper-content {
   height: 100%;
+  max-height: 100%;
+}
+
+button {
+  border: 1px green solid;
+  border-radius: 20px;
+  background-color: cornsilk;
+  text-align: center;
+  width: 100px;
+  outline: none;
+}
+button:focus {
+  outline: none;
+}
+button:hover {
+  border: 2px cornsilk solid;
+  background-color: green;
+  transition-duration: 1s;
 }

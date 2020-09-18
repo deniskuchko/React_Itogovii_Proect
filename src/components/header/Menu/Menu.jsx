@@ -1,13 +1,12 @@
-import React, { Component } from "react";
-import "./Menu.scss";
-import { NavLink } from "react-router-dom";
+import React from "react";
 import MenuLogIn from "../../common/MenuLogIn/MenuLogIn";
 import MenuLogOut from "../../common/MenuLoOut/MenuLogout";
+
+import "./Menu.scss";
 
 const Menu = (props) => {
   return (
     <div className="menu">
-      <NavLink to="/">Home</NavLink>
       {props.isAuth ? (
         <MenuLogOut login={props.login} userId={props.userId} />
       ) : (

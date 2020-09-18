@@ -1,8 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+import Header from "./Header";
 
 import "./Header.scss";
-import Header from "./Header";
-import { connect } from "react-redux";
 
 class HeaderContainer extends React.Component {
   render() {

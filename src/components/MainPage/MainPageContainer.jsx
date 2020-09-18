@@ -1,7 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { like, unLike, requestPosts } from "../../redux/mainPage-reducer";
+import {
+  like,
+  unLike,
+  requestPosts,
+  filterPost,
+} from "../../redux/mainPage-reducer";
 import Preloader from "../common/Preloader/Preloader";
 
 import {
@@ -12,7 +17,6 @@ import {
   getIsFetching,
   getIsAuth,
 } from "../../redux/mainPage-selectors/mainPage-selectors";
-import MyArticles from "../MyArticles/MyArticles";
 import MainPage from "./MainPage";
 
 class MainPageContainer extends React.Component {
@@ -36,6 +40,7 @@ class MainPageContainer extends React.Component {
           unLike={this.props.unLike}
           like={this.props.like}
           isAuth={this.props.isAuth}
+          filterPost={this.props.filterPost}
         />
       </>
     );
@@ -56,4 +61,5 @@ export default connect(mapStateToProps, {
   like,
   unLike,
   requestPosts,
+  filterPost,
 })(MainPageContainer);

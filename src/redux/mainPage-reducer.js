@@ -93,4 +93,16 @@ export const requestPosts = (currentPage, pageSize) => {
     dispatch(setUsers(response.data));
   };
 };
+export const filterPost = (word) => {
+  return async (dispatch) => {
+    let response = await userAPI.getMyPosts();
+
+    let arrayPostsFiltered = response.data.filter((u) =>
+      [u.keywords[0]].some((words) => words === word)
+    );
+    console.log(arrayPostsFiltered);
+
+    dispatch(setUsers(arrayPostsFiltered));
+  };
+};
 export default mainPageReducers;

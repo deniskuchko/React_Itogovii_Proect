@@ -1,16 +1,22 @@
-.myPosts {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  border: 1px blue solid;
-  margin-bottom: 10px;
-  text-align: center;
+.articleOfUser {
+  padding: 20px;
 }
-.myPosts span {
+
+.articleCard {
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  width: 30%;
+  width: 90%;
+  margin: 20px auto;
+  border: 1px solid black;
+  border-radius: 40px;
+  margin: 0 auto;
+  padding: 20px;
 }
-.myPosts div {
-  width: 70%;
+.articleCard span {
+  color: green;
+}
+.articleCard:hover {
+  transition-duration: 1s;
+  transform: scale(1.1);
 }

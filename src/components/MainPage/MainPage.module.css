@@ -16,6 +16,15 @@
   margin: 20px auto;
   border: 1px solid black;
   border-radius: 40px;
+  padding: 20px;
+}
+.personArticle:hover {
+  transition-duration: 1s;
+  transform: scale(1.1);
+}
+.personArticle a {
+  text-decoration: none;
+  color: rgb(2, 43, 2);
 }
 .personArticle .infoPerson {
   margin: 10px 0;
@@ -33,4 +42,9 @@
   height: 40px;
   transition: 1s;
   margin-bottom: 10px;
+}
+@media (max-width: 420px) {
+  .personArticle {
+    width: 100%;
+  }
 }

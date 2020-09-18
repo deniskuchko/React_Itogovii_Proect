@@ -1,6 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import { useState } from "react";
+import { useEffect } from "react";
+import { compose } from "redux";
+import { Redirect, withRouter } from "react-router-dom";
 import Preloader from "../common/Preloader/Preloader";
 import PostOfUser from "./PostOfUser";
 import {
@@ -9,10 +12,6 @@ import {
   increasePostLikes,
   setPost,
 } from "../../redux/post-reducer";
-import { useState } from "react";
-import { useEffect } from "react";
-import { compose } from "redux";
-import { withRouter } from "react-router-dom";
 
 class PostOfUserContainer extends React.Component {
   componentDidMount() {
@@ -26,6 +25,7 @@ class PostOfUserContainer extends React.Component {
         <PostOfUser
           post={this.props.post}
           isLike={this.props.isLike}
+          isAuth={this.props.isAuth}
           increaseLikes={this.props.increasePostLikes}
           decreaseLikes={this.props.decreasePostLikes}
         />
@@ -37,6 +37,7 @@ let mapStateToProps = (state) => {
   return {
     post: state.post.post,
     isLike: state.post.isLike,
+    isAuth: state.auth.isAuth,
   };
 };
 

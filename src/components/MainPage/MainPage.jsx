@@ -5,6 +5,7 @@ import { NavLink, Redirect } from "react-router-dom";
 import { useState } from "react";
 
 import s from "./MainPage.module.css";
+import MainPagePaginationsOfWords from "./MainPagePaginationsOfWords/MainPagePaginationsOfWords";
 
 let MainPage = ({
   totalItemsCount,
@@ -57,6 +58,7 @@ let MainPage = ({
           </button>
         )}
       </div>
+      <MainPagePaginationsOfWords filterPost={props.filterPost} />
       {post.map((u) => (
         <div key={u.id} className={s.personArticle}>
           <span className={s.infoPerson}>

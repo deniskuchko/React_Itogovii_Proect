@@ -3,17 +3,17 @@ import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import { FormControl } from "../common/FormsControls/FormControls";
 import { required, maxLengthCreator } from "../../utils/validatirs/validators";
-import IconLabelButtons from "../common/buttonSave/buttonSave";
-import { getUserId } from "../../redux/profile-selectors/profile-selectors";
 import { setNewArticleReducer } from "../../redux/myArticles-reducer";
 import { Redirect } from "react-router-dom";
+
+import s from "./MyArticles.module.css";
 
 const Input = FormControl("input");
 const Textarea = FormControl("textarea");
 
 const MyArticlesForm = (props) => {
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={props.handleSubmit} className={s.sign}>
       <div>
         <Field
           placeholder={"Title of new article"}
@@ -72,11 +72,12 @@ const MyArticlesReduxForm = reduxForm({ form: "articles" })(MyArticlesForm);
 const MyArticles = (props) => {
   const onSubmit = (formData) => {
     debugger;
+
     props.setNewArticleReducer(
       formData.title,
       formData.about,
       formData.textOfArticle,
-      formData.keywords,
+      formData.keywords.split(", "),
       props.userId
     );
   };

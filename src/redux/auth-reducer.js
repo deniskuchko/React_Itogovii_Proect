@@ -1,4 +1,4 @@
-import { authApi } from "../api/api";
+import { authApi, userAPI } from "../api/api";
 
 const SET_USER_DATA = "SET_USER_DATA";
 
@@ -36,7 +36,6 @@ export const setUserData = (userId, login, email, password, isAuth) => ({
 export const getAuthUserData = () => {
   return (dispatch) => {
     authApi.me().then((response) => {
-      console.log(response.data);
       if (response.data.resultCode === 0) {
         let { id, email, login } = response.data.data;
         dispatch(setUserData(response.data));
@@ -61,7 +60,7 @@ export const getLogin = (login, password, rememberMe) => {
               true
             )
           )
-        : alert("SignUp");
+        : alert("Not correct email or password ");
     });
   };
 };
@@ -77,6 +76,20 @@ export const setNewUserData = (login, email, password, rememberMe) => {
           setUserData(data.id, data.login, data.email, data.password, true)
         );
       });
+  };
+};
+export const changeUserData = (userId, login, email, password) => {
+  return async (dispatch) => {
+    let response = await userAPI.changeUser(userId, login, email, password);
+    dispatch(
+      setUserData(
+        response.data.userId,
+        response.data.login,
+        response.data.email,
+        response.data.password,
+        true
+      )
+    );
   };
 };
 

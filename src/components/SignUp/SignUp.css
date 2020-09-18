@@ -1,0 +1,33 @@
+.sign {
+  text-align: center;
+}
+.sign a {
+  font-size: 12px;
+}
+.sign input {
+  border: 1px rgb(5, 5, 145) solid;
+  border-radius: 20px;
+  text-align: center;
+  outline: none;
+  background-color: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.sign input:hover {
+  border: 3px rgb(10, 184, 97) solid;
+  transition: 1s;
+  transform: scale(1.1);
+  background: green;
+  opacity: 0.5;
+}
+.sign .checkbox {
+  display: flex;
+  justify-content: center;
+}
+.sign .checkbox input {
+  margin-right: 10px;
+  display: inline-flex;
+}
+.sign span {
+  display: block;
+}

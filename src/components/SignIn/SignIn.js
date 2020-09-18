@@ -15,7 +15,7 @@ import { required, maxLengthCreator } from "../../utils/validatirs/validators";
 import { getLogin } from "../../redux/auth-reducer";
 import { connect } from "react-redux";
 
-import "./SignIn.css";
+import s from "./SignIn.css";
 
 const Input = FormControl("input");
 let maxLength25 = maxLengthCreator(25);
@@ -69,7 +69,7 @@ function SignInSideForm(props) {
             Sign in
           </Typography>
           <form
-            className={classes.form}
+            className={`${classes.form} sign`}
             noValidate
             onSubmit={props.handleSubmit}
           >
@@ -89,7 +89,7 @@ function SignInSideForm(props) {
                 validate={[required, maxLength25]}
               />
             </div>
-            <div>
+            <div className="checkbox">
               <Field type={"checkbox"} name={"rememberMe"} component={Input} />
               Remember Me
             </div>

@@ -1,10 +1,16 @@
-.menu{
-    a{
-        color: gray;
-        margin: 0 5px;
-        font-size: 12px;
-        &:hover{
-            color: #000;
-        }
+.menu {
+  a {
+    color: gray;
+    margin: 0 5px;
+    font-size: 12px;
+    &:hover {
+      color: #000;
     }
+  }
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 }

@@ -3,18 +3,26 @@ import s from "./ArticlesOfLoginUser.module.css";
 
 let ArticlesOfLoginUser = (props) => {
   return (
-    <div className={s.myArticles}>
+    <div className={s.articleOfUser}>
       <div>
-        My posts:
         {props.myPost.map((p, i) => {
           return (
-            <div key={p.id} className={s.myPosts}>
+            <div key={p.id} className={s.articleCard}>
               <span>Post number: {i + 1}</span>
               <div>
-                <div>Title: {p.title}</div>
-                <div>Article is about: {p.articleAbout}</div>
-                <div>Text: {p.textOfArticle}</div>
-                <div> Numbers of likes: {p.likes}</div>
+                <div>
+                  Title: <span>{p.title}</span>
+                </div>
+                <div>
+                  Article is about: <span>{p.articleAbout}</span>
+                </div>
+                <div>
+                  Text: <span>{p.textOfArticle}</span>
+                </div>
+                <div>
+                  {" "}
+                  Numbers of likes:<span> {p.likes}</span>
+                </div>
               </div>
             </div>
           );

@@ -15,6 +15,8 @@ import { FormControl } from "../common/FormsControls/FormControls";
 import { connect } from "react-redux";
 import { setNewUserData } from "../../redux/auth-reducer";
 
+import "./SignUp.css";
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -51,7 +53,11 @@ function SignUpForm(props) {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate onSubmit={props.handleSubmit}>
+        <form
+          className={`${classes.form} sign`}
+          noValidate
+          onSubmit={props.handleSubmit}
+        >
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <Field
@@ -78,7 +84,7 @@ function SignUpForm(props) {
               />
             </Grid>
             <Grid item xs={12}>
-              <div>
+              <div className="checkbox">
                 <Field
                   type={"checkbox"}
                   name={"rememberMe"}

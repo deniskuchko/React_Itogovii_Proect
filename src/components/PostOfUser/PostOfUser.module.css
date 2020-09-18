@@ -1,0 +1,33 @@
+.articleCard {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  margin: 20px auto;
+  border: 1px solid black;
+  border-radius: 40px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.articleCard img {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.articleCard img:hover {
+  transition-duration: 1s;
+  transform: scale(1.1);
+}
+.articleCard span {
+  color: green;
+}
+.articleCard:hover {
+  transition-duration: 1s;
+  transform: scale(1.1);
+}
+.articleCard .itemText {
+  margin: 5px;
+}
