@@ -1,4 +1,5 @@
 import { authApi, userAPI } from "../api/api";
+import { passwordDisCoding } from "../crypto/crypto";
 
 const SET_USER_DATA = "SET_USER_DATA";
 
@@ -47,7 +48,10 @@ export const getLogin = (login, password, rememberMe) => {
     authApi.login().then((response) => {
       let arrUsers = response.data;
       let userLogin = arrUsers.filter((el) => {
-        return el.login === login && el.password === password;
+        const enteringPassword = passwordDisCoding(password);
+        const takingPassword = passwordDisCoding(el.password);
+
+        return el.login === login && takingPassword === enteringPassword;
       });
       userLogin[0]
         ? dispatch(

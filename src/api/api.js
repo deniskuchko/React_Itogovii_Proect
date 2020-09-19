@@ -12,7 +12,9 @@ export const userAPI = {
   },
 
   getPosts: (currentPage, pageSize) => {
-    return instance.get(`posts?_page=${currentPage}&_limit=${pageSize}`);
+    return instance.get(
+      `posts?page[offset]=${currentPage}&page[limit]=${pageSize}`
+    );
     /*       .then((response) => response);
      */
   },

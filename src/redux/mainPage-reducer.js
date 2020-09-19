@@ -8,7 +8,7 @@ const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const TOOGLE_IS_FETCHING = "TOOGLE_IS_FETCHING";
 let initialState = {
   post: [],
-  pageSize: 10,
+  pageSize: 2,
   postCount: 0,
   currentPage: 1,
   isFetching: true,
@@ -88,9 +88,13 @@ export const requestPosts = (currentPage, pageSize) => {
     dispatch(toogleIsFetching(true));
     dispatch(setCurrentPage(currentPage));
     let response = await userAPI.getPosts(currentPage, pageSize);
-    dispatch(setTotalUsersCount(response.data.length));
     dispatch(toogleIsFetching(false));
-    dispatch(setUsers(response.data));
+    let arr = response.data.slice(
+      (currentPage - 1) * pageSize,
+      currentPage * pageSize
+    );
+    dispatch(setUsers(arr));
+    dispatch(setTotalUsersCount(response.data.length));
   };
 };
 export const filterPost = (word) => {

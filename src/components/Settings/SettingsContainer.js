@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
+import { passwordCoding } from "../../crypto/crypto";
 import { changeUserData } from "../../redux/auth-reducer";
 import { maxLengthCreator, required } from "../../utils/validatirs/validators";
 import { FormControl } from "../common/FormsControls/FormControls";
@@ -42,11 +43,12 @@ const SettingsRedux = reduxForm({
 
 class SettingsContainer extends React.Component {
   onSubmit = (formData) => {
+    const hash = passwordCoding(formData.password);
     this.props.changeUserData(
       this.props.userId,
       formData.login,
       this.props.email,
-      formData.password
+      hash
     );
   };
 

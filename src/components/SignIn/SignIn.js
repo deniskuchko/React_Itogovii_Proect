@@ -12,6 +12,7 @@ import { FormControl } from "../common/FormsControls/FormControls";
 import { required, maxLengthCreator } from "../../utils/validatirs/validators";
 import { getLogin } from "../../redux/auth-reducer";
 import { connect } from "react-redux";
+import { passwordCoding } from "../../crypto/crypto";
 
 const Input = FormControl("input");
 let maxLength25 = maxLengthCreator(25);
@@ -111,7 +112,8 @@ const SignInSideReduxForm = reduxForm({
 
 class SignInSide extends React.Component {
   onSubmit = (formData) => {
-    this.props.getLogin(formData.login, formData.password, formData.rememberMe);
+    let hash = passwordCoding(formData.password);
+    this.props.getLogin(formData.login, hash, formData.rememberMe);
   };
 
   render() {

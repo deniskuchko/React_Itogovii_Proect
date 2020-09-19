@@ -14,7 +14,7 @@ let MainPage = ({
   currentPage,
   onPageChange,
   post,
-  portionSize = 3,
+  portionSize = 2,
   ...props
 }) => {
   let pageCount = Math.ceil(totalItemsCount / pageSize);
@@ -53,7 +53,7 @@ let MainPage = ({
               </span>
             );
           })}
-        {portionCount >= portionNumber && (
+        {portionCount > portionNumber && (
           <button onClick={() => setPorionNumber(portionNumber + 1)}>
             Next
           </button>

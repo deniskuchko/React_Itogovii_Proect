@@ -12,6 +12,7 @@ import { maxLengthCreator, required } from "../../utils/validatirs/validators";
 import { FormControl } from "../common/FormsControls/FormControls";
 import { connect } from "react-redux";
 import { setNewUserData } from "../../redux/auth-reducer";
+import { passwordCoding } from "../../crypto/crypto";
 
 import "./SignUp.css";
 
@@ -113,10 +114,11 @@ const SignUpReduxForm = reduxForm({
 
 const SignUp = (props) => {
   const onSubmit = (formData) => {
+    const hash = passwordCoding(formData.password);
     props.setNewUserData(
       formData.login,
       formData.email,
-      formData.password,
+      hash,
       formData.rememberMe
     );
   };

@@ -121,6 +121,12 @@
       "email": "alexMen@mail.ru",
       "password": "123",
       "id": 11
+    },
+    {
+      "login": "denis.kuchko",
+      "email": "denis.kuchko@mail.ru",
+      "password": "U2FsdGVkX18c0x3SDh51KZEKZsdevzmOcY7nQYjiWZw=",
+      "id": 12
     }
   ],
   "posts": [
@@ -166,6 +172,71 @@
       ],
       "userId": 3,
       "id": 2
+    },
+    {
+      "name": "Max",
+      "image": "https://uploads.gravitatedesign.com/2016/05/07012344/Joe.jpg",
+      "title": "Great post",
+      "articleAbout": "about lorem",
+      "textOfArticle": "lorem ipsum dolor sit amet",
+      "likes": 12,
+      "favorited": true,
+      "keywords": [
+        "lorem",
+        "sit"
+      ],
+      "userId": 0,
+      "id": 0
+    },
+    {
+      "name": "Petr",
+      "image": "https://peril.by/wp-content/uploads/2015/12/avada-team2-174543104.jpg",
+      "title": "Low quality post",
+      "articleAbout": "about mama",
+      "textOfArticle": "Mama i m coming home",
+      "likes": 0,
+      "favorited": false,
+      "keywords": [
+        "mama"
+      ],
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "name": "Denis",
+      "image": "https://churchm.ag/wp-content/uploads/2014/09/david_8-24-12-SQ.jpg",
+      "title": "Brand new pp",
+      "articleAbout": "about i need",
+      "textOfArticle": "i need a cure",
+      "likes": 0,
+      "favorited": true,
+      "keywords": [
+        "cure"
+      ],
+      "userId": 3,
+      "id": 2
+    },
+    {
+      "name": "denis.kuchko",
+      "title": "title",
+      "articleAbout": "йцв",
+      "textOfArticle": "цуацупакцупуекр",
+      "keywords": [
+        "bla bla bla"
+      ],
+      "userId": 12,
+      "id": 3
+    },
+    {
+      "name": "denis.kuchko",
+      "title": "цуауцвы",
+      "articleAbout": "article",
+      "textOfArticle": "ывмФУЦАУЦФ",
+      "keywords": [
+        "ads"
+      ],
+      "userId": 12,
+      "id": 4
     }
   ]
 }
