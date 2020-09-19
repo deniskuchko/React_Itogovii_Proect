@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { initialise } from "../../redux/app-reducer";
 import { compose } from "redux";
 import Preloader from "../common/Preloader/Preloader";
-import MainPageContainerWithHooks from "../MainPage/MainPageContainerWithHooks";
 import MyArticles from "../MyArticles/MyArticles";
 import PostOfUserContainer from "../PostOfUser/PostOfUserContainer";
 import StickyFooter from "../Footer/Footer";
@@ -67,8 +66,8 @@ class App extends React.Component {
 
             <Route path="*" render={() => <div>404 NOT FOUND</div>}></Route>
           </Switch>
+          <StickyFooter />
         </div>
-        <StickyFooter />
       </div>
     );
   }

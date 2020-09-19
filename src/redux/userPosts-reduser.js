@@ -24,7 +24,6 @@ export const getUserPosts = (userId) => async (dispatch) => {
   let response = await userAPI.getMyPosts();
   let myArrayPosts = response.data.filter((u) => u.userId == userId);
   dispatch(setUserPost(myArrayPosts));
-  debugger;
 };
 
 export default userPostsReducer;

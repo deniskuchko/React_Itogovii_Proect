@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 50%;
+  width: 90%;
+
   margin: 20px auto;
   border: 1px solid black;
   border-radius: 40px;
@@ -30,4 +31,10 @@
 }
 .articleCard .itemText {
   margin: 5px;
+}
+
+@media (max-width: 420px) {
+  .articleCard {
+    width: 100%;
+  }
 }

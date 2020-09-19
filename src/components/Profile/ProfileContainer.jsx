@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as axios from "axios";
 
 import {} from "../../redux/mainPage-reducer";
 import Profile from "./Profile";
@@ -9,14 +8,12 @@ import {
   unFollow,
   getProfileThunk,
 } from "../../redux/profilePage-reducer";
-import { withRouter, Redirect } from "react-router-dom";
-import { userAPI } from "../../api/api";
+import { withRouter } from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 import {
   getProfile,
   getIsFollowed,
-  getUserId,
 } from "../../redux/profile-selectors/profile-selectors";
 
 class ProfileContainer extends React.Component {

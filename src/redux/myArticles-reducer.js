@@ -4,6 +4,7 @@ const SET_NEW_POST = "SET_NEW_POST";
 const SET_SAVE_NEW_ARTICLE = "SET_SAVE_NEW_ARTICLE";
 
 let initialState = {
+  name: null,
   title: null,
   articleAbout: null,
   textOfArticle: null,
@@ -24,6 +25,7 @@ const myArticlesReducer = (state = initialState, action) => {
 };
 
 const setNewArticle = (
+  name,
   title,
   articleAbout,
   textOfArticle,
@@ -31,7 +33,7 @@ const setNewArticle = (
   userId
 ) => ({
   type: SET_NEW_POST,
-  postload: { title, articleAbout, textOfArticle, keywords, userId },
+  postload: { name, title, articleAbout, textOfArticle, keywords, userId },
 });
 
 const setSaveNewArticle = () => ({
@@ -39,6 +41,7 @@ const setSaveNewArticle = () => ({
 });
 
 export const setNewArticleReducer = (
+  name,
   title,
   articleAbout,
   textOfArticle,
@@ -46,6 +49,7 @@ export const setNewArticleReducer = (
   userId
 ) => async (dispatch) => {
   let response = await postAPI.setNewPost(
+    name,
     title,
     articleAbout,
     textOfArticle,

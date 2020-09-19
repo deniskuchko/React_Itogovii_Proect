@@ -8,7 +8,7 @@ const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const TOOGLE_IS_FETCHING = "TOOGLE_IS_FETCHING";
 let initialState = {
   post: [],
-  pageSize: 4,
+  pageSize: 10,
   postCount: 0,
   currentPage: 1,
   isFetching: true,

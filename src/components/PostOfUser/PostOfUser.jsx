@@ -1,5 +1,8 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import FavoriteTwoToneIcon from "@material-ui/icons/FavoriteTwoTone";
+
+import userPhoto from "../../assets/image/user.png";
 
 import s from "./PostOfUser.module.css";
 
@@ -16,7 +19,6 @@ let PostOfUser = (props) => {
     keywords,
     userId,
   } = props.post;
-  debugger;
   if (!props.isAuth) {
     return <Redirect to={"/signin"} />;
   }
@@ -24,7 +26,10 @@ let PostOfUser = (props) => {
     <div>
       <div className={s.articleCard}>
         <div>
-          <img src={props.post.image} />
+          <img
+            src={props.post.image ? props.post.image : userPhoto}
+            alt="user "
+          />
           <div className={s.itemText}>
             Name of person:<span> {props.post.name} </span>
             <span>
@@ -59,6 +64,7 @@ let PostOfUser = (props) => {
                         )
                 }
               >
+                <FavoriteTwoToneIcon />
                 {props.post.likes}
               </button>
             </span>

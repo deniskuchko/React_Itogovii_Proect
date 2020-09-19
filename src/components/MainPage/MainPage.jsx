@@ -1,11 +1,12 @@
 import React from "react";
 
 import userPhoto from "../../assets/image/user.png";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
-import s from "./MainPage.module.css";
 import MainPagePaginationsOfWords from "./MainPagePaginationsOfWords/MainPagePaginationsOfWords";
+
+import s from "./MainPage.module.css";
 
 let MainPage = ({
   totalItemsCount,
@@ -29,7 +30,7 @@ let MainPage = ({
 
   return (
     <div className="mainPage">
-      <div>
+      <div className={s.numberPagination}>
         {portionNumber > 1 && (
           <button onClick={() => setPorionNumber(portionNumber - 1)}>
             Prev
@@ -65,7 +66,8 @@ let MainPage = ({
             <div className={s.personIMGMainPage}>
               <NavLink to={"/profile/" + u.userId}>
                 <img
-                  src={u.image !== null ? u.image : userPhoto}
+                  src={u.image ? u.image : userPhoto}
+                  alt="User "
                   className={s.userPhoto}
                 />
               </NavLink>

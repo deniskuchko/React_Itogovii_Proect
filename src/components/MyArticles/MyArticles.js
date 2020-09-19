@@ -2,7 +2,7 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import { FormControl } from "../common/FormsControls/FormControls";
-import { required, maxLengthCreator } from "../../utils/validatirs/validators";
+import { required } from "../../utils/validatirs/validators";
 import { setNewArticleReducer } from "../../redux/myArticles-reducer";
 import { Redirect } from "react-router-dom";
 
@@ -71,9 +71,8 @@ const MyArticlesReduxForm = reduxForm({ form: "articles" })(MyArticlesForm);
 
 const MyArticles = (props) => {
   const onSubmit = (formData) => {
-    debugger;
-
     props.setNewArticleReducer(
+      props.login,
       formData.title,
       formData.about,
       formData.textOfArticle,
@@ -93,6 +92,7 @@ const MyArticles = (props) => {
 
 const mapStateToProps = (state) => ({
   userId: state.auth.userId,
+  login: state.auth.login,
   isArticle: state.myArticles.isArticle,
 });
 export default connect(mapStateToProps, { setNewArticleReducer })(MyArticles);

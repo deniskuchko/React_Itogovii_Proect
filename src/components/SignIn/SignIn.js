@@ -1,8 +1,6 @@
 import React from "react";
 import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -14,8 +12,6 @@ import { FormControl } from "../common/FormsControls/FormControls";
 import { required, maxLengthCreator } from "../../utils/validatirs/validators";
 import { getLogin } from "../../redux/auth-reducer";
 import { connect } from "react-redux";
-
-import s from "./SignIn.css";
 
 const Input = FormControl("input");
 let maxLength25 = maxLengthCreator(25);
@@ -114,12 +110,6 @@ const SignInSideReduxForm = reduxForm({
 })(SignInSideForm);
 
 class SignInSide extends React.Component {
-  /* componentDidUpdate(prevProps, prevState) {
-    debugger;
-    if (prevProps.userId !== this.props.userId) {
-      return this.props.userId;
-    }
-  } */
   onSubmit = (formData) => {
     this.props.getLogin(formData.login, formData.password, formData.rememberMe);
   };

@@ -1,10 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { useState } from "react";
-import { useEffect } from "react";
 import { compose } from "redux";
-import { Redirect, withRouter } from "react-router-dom";
-import Preloader from "../common/Preloader/Preloader";
+import { withRouter } from "react-router-dom";
 import PostOfUser from "./PostOfUser";
 import {
   decreasePostLikes,

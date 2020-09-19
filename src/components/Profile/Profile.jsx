@@ -19,8 +19,7 @@ let Profile = (props) => {
             ? `${props.profile.profileImage}`
             : userPhoto
         }
-        /* props.profile.profileImage */
-        /* {props.profile.profileImage ? `${props.profile.profileImage}` : userPhoto} */
+        alt="user "
         className={s.userPhoto}
       />
       <div>Name:{props.profile.login}</div>
@@ -37,15 +36,7 @@ let Profile = (props) => {
           unfollow
         </button>
       ) : (
-        <button
-          onClick={() => {
-            /* axios.post("http://localhost:3000/posts").then((response) => {
-              response.data = props.follow();
-            }); */
-          }}
-        >
-          follow
-        </button>
+        <button onClick={() => {}}>follow</button>
       )}
       <div>
         <ArticlesOfLoginUserContainer />

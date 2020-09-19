@@ -3,13 +3,6 @@ let instance = axios.create({
   baseURL: "http://localhost:3000/",
 });
 
-let instanceAuth = axios.create({
-  withCredentials: true,
-  baseURL: "https://social-network.samuraijs.com/api/1.0/",
-  headers: {
-    "api-key": "ea93dd19-8ab1-41f1-896b-2fe3b8c089dc",
-  },
-});
 export const userAPI = {
   getUsers: (userId) => {
     return instance.get(`/users/${userId}`);
@@ -28,8 +21,9 @@ export const userAPI = {
   },
 };
 export const postAPI = {
-  setNewPost: (title, articleAbout, textOfArticle, keywords, userId) => {
+  setNewPost: (name, title, articleAbout, textOfArticle, keywords, userId) => {
     return instance.post("/posts", {
+      name,
       title,
       articleAbout,
       textOfArticle,
