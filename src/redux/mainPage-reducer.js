@@ -102,7 +102,7 @@ export const filterPost = (word) => {
     let response = await userAPI.getMyPosts();
 
     let arrayPostsFiltered = response.data.filter((u) =>
-      [u.keywords[0]].some((words) => words === word)
+      Object.keys(u.keywords).some((words) => words === word)
     );
     console.log(arrayPostsFiltered);
 
