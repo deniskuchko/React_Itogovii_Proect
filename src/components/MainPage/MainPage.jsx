@@ -36,23 +36,25 @@ let MainPage = ({
             Prev
           </button>
         )}
-        {page
-          .filter(
-            (p) => p >= leftPortionPageNumber && p <= rightPortionPageNumber
-          )
-          .map((p) => {
-            return (
-              <span
-                key={p}
-                className={currentPage === p ? s.selectedPage : ""}
-                onClick={(e) => {
-                  onPageChange(p);
-                }}
-              >
-                {p}
-              </span>
-            );
-          })}
+        <div className={s.itemPagination}>
+          {page
+            .filter(
+              (p) => p >= leftPortionPageNumber && p <= rightPortionPageNumber
+            )
+            .map((p) => {
+              return (
+                <span
+                  key={p}
+                  className={currentPage === p ? s.selectedPage : ""}
+                  onClick={(e) => {
+                    onPageChange(p);
+                  }}
+                >
+                  {p}
+                </span>
+              );
+            })}
+        </div>
         {portionCount > portionNumber && (
           <button onClick={() => setPorionNumber(portionNumber + 1)}>
             Next
@@ -87,11 +89,6 @@ let MainPage = ({
             {u.favorited ? (
               <button
                 onClick={() => {
-                  /* if (!props.isAuth) {
-                    return <Redirect to={"/signin"} />;
-                  } else {
-                    props.unLike(u.id);
-                  } */
                   props.unLike(u.id);
                 }}
               >

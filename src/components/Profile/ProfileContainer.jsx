@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import {} from "../../redux/mainPage-reducer";
+import { like, unLike } from "../../redux/mainPage-reducer";
 import Profile from "./Profile";
 import {
   follow,
@@ -17,20 +17,24 @@ import {
 } from "../../redux/profile-selectors/profile-selectors";
 
 class ProfileContainer extends React.Component {
-  componentDidMount() {
+  refreshUser() {
     let userId = this.props.match.params.usersId;
-    //this.props.match.params.usersId;
-
     if (!this.props.isAuth) {
       userId = this.props.authorisedUserId;
       if (!userId) {
         return (userId = this.props.history.push("/login"));
       }
     }
-
     this.props.getProfileThunk(userId);
   }
-
+  componentDidMount() {
+    this.refreshUser();
+  }
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.usersId != prevProps.match.params.usersId) {
+      this.refreshUser();
+    }
+  }
   render() {
     return <Profile {...this.props} profile={this.props.profile} />;
   }
@@ -49,6 +53,8 @@ export default compose(
     getProfileThunk,
     follow,
     unFollow,
+    like,
+    unLike,
   }),
   withRouter,
   withAuthRedirect

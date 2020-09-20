@@ -6,9 +6,16 @@ import { getUserPosts } from "../../redux/userPosts-reduser";
 import ArticlesOfLoginUser from "./ArticlesOfLoginUser";
 
 class ArticlesOfLoginUserContainer extends React.Component {
-  componentDidMount() {
+  refreshPost() {
     let usersId = this.props.match.params.usersId;
     this.props.getUserPosts(usersId);
+  }
+  componentDidMount() {
+    this.refreshPost();
+  }
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.usersId !== prevProps.match.params.usersId)
+      this.refreshPost();
   }
   render() {
     return <ArticlesOfLoginUser {...this.props} />;
