@@ -24,13 +24,19 @@ let Profile = (props) => {
       {props.profile.followed ? (
         <button
           onClick={() => {
-            props.follow();
+            props.unFollowThunk(props.profile);
           }}
         >
           unfollow
         </button>
       ) : (
-        <button onClick={() => {}}>follow</button>
+        <button
+          onClick={() => {
+            props.followThunk(props.profile);
+          }}
+        >
+          follow
+        </button>
       )}
       <div>
         <ArticlesOfLoginUserContainer />

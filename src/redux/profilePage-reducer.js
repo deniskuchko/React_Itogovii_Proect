@@ -13,12 +13,12 @@ const profilePageReducers = (state = initialState, action) => {
     case FOLLOW:
       return {
         ...state,
-        isFollowed: true,
+        profile: { ...action.profile, followed: true },
       };
     case UNFOLLOW:
       return {
         ...state,
-        isFollowed: false,
+        profile: { ...action.profile, followed: false },
       };
     case SET_USER_PROFILE:
       return {
@@ -35,12 +35,28 @@ export const setUsersProfile = (profile) => ({
   type: SET_USER_PROFILE,
   profile,
 });
-export const follow = () => ({
+export const follow = (profile) => ({
   type: FOLLOW,
+  profile,
 });
-export const unFollow = () => ({
+export const unFollow = (profile) => ({
   type: UNFOLLOW,
+  profile,
 });
+
+export const followThunk = (profile) => {
+  return async (dispatsh) => {
+    dispatsh(follow(profile));
+    await userAPI.changePersonInfo(profile);
+  };
+};
+export const unFollowThunk = (profile) => {
+  return async (dispatsh) => {
+    dispatsh(unFollow(profile));
+    await userAPI.changePersonInfo(profile);
+  };
+};
+
 export const getProfileThunk = (userId) => {
   return async (dispatsh) => {
     let responce = await userAPI.getUsers(userId);

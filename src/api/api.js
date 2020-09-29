@@ -21,6 +21,9 @@ export const userAPI = {
   getMyPosts: () => {
     return instance.get("/posts");
   },
+  changePersonInfo: (personInfo) => {
+    return instance.put(`/users/${personInfo.id}`, personInfo);
+  },
 };
 export const postAPI = {
   setNewPost: (name, title, articleAbout, textOfArticle, keywords, userId) => {

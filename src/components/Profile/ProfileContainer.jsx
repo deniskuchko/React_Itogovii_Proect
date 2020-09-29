@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { like, unLike } from "../../redux/mainPage-reducer";
 import Profile from "./Profile";
 import {
-  follow,
-  unFollow,
+  followThunk,
+  unFollowThunk,
   getProfileThunk,
 } from "../../redux/profilePage-reducer";
 import { withRouter } from "react-router-dom";
@@ -51,8 +51,8 @@ let mapStateToProps = (state) => {
 export default compose(
   connect(mapStateToProps, {
     getProfileThunk,
-    follow,
-    unFollow,
+    followThunk,
+    unFollowThunk,
     like,
     unLike,
   }),
