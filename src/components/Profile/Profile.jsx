@@ -5,6 +5,7 @@ import Preloader from "../common/Preloader/Preloader";
 import ArticlesOfLoginUserContainer from "../ArticlesOfLoginUser/ArticlesOfLoginUserContainer";
 
 import s from "./Profile.module.css";
+import { ContainedButtons } from "../common/button/button";
 
 let Profile = (props) => {
   if (!props.profile) {
@@ -22,21 +23,19 @@ let Profile = (props) => {
       <div>Name:{props.profile.login}</div>
       <div>email:{props.profile.email}</div>
       {props.profile.followed ? (
-        <button
-          onClick={() => {
+        <ContainedButtons
+          text={"unfollow"}
+          click={() => {
             props.unFollowThunk(props.profile);
           }}
-        >
-          unfollow
-        </button>
+        />
       ) : (
-        <button
-          onClick={() => {
+        <ContainedButtons
+          text={"follow"}
+          click={() => {
             props.followThunk(props.profile);
           }}
-        >
-          follow
-        </button>
+        />
       )}
       <div>
         <ArticlesOfLoginUserContainer />

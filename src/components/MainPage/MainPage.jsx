@@ -7,6 +7,7 @@ import { useState } from "react";
 import MainPagePaginationsOfWords from "./MainPagePaginationsOfWords/MainPagePaginationsOfWords";
 
 import s from "./MainPage.module.css";
+import { ContainedButtons, TextButtons } from "../common/button/button";
 
 let MainPage = ({
   totalItemsCount,
@@ -32,9 +33,12 @@ let MainPage = ({
     <div className="mainPage">
       <div className={s.numberPagination}>
         {portionNumber > 1 && (
-          <button onClick={() => setPorionNumber(portionNumber - 1)}>
-            Prev
-          </button>
+          <ContainedButtons
+            text={"Prev"}
+            click={() => {
+              setPorionNumber(portionNumber - 1);
+            }}
+          />
         )}
         <div className={s.itemPagination}>
           {page
@@ -43,22 +47,22 @@ let MainPage = ({
             )
             .map((p) => {
               return (
-                <span
-                  key={p}
-                  className={currentPage === p ? s.selectedPage : ""}
-                  onClick={(e) => {
+                <TextButtons
+                  text={p}
+                  click={() => {
                     onPageChange(p);
                   }}
-                >
-                  {p}
-                </span>
+                />
               );
             })}
         </div>
         {portionCount > portionNumber && (
-          <button onClick={() => setPorionNumber(portionNumber + 1)}>
-            Next
-          </button>
+          <ContainedButtons
+            text={"Next"}
+            click={() => {
+              setPorionNumber(portionNumber + 1);
+            }}
+          />
         )}
       </div>
       <MainPagePaginationsOfWords filterPost={props.filterPost} />
@@ -87,21 +91,19 @@ let MainPage = ({
           </span>
           <span>
             {u.favorited ? (
-              <button
-                onClick={() => {
+              <ContainedButtons
+                text="Unfollow"
+                click={() => {
                   props.unLike(u.id);
                 }}
-              >
-                Unfollow
-              </button>
+              />
             ) : (
-              <button
-                onClick={() => {
+              <ContainedButtons
+                text="follow"
+                click={() => {
                   props.like(u.id);
                 }}
-              >
-                Follow
-              </button>
+              />
             )}
           </span>
         </div>

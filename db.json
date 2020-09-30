@@ -249,6 +249,17 @@
       ],
       "userId": 12,
       "id": 5
+    },
+    {
+      "name": "denis.kuchko",
+      "title": "1",
+      "articleAbout": "1",
+      "textOfArticle": "1",
+      "keywords": [
+        "1"
+      ],
+      "userId": 12,
+      "id": 6
     }
   ]
 }

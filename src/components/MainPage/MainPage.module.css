@@ -53,15 +53,9 @@
   justify-content: center;
 }
 .numberPagination .itemPagination {
-  border: 1px greenyellow solid;
-  border-radius: 5px;
+  display: flex;
 }
 
-.numberPagination span {
-  text-align: center;
-  margin-left: 10px;
-  margin-right: 10px;
-}
 @media (max-width: 420px) {
   .personArticle {
     width: 100%;
